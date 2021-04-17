@@ -26,6 +26,8 @@ class CSVParser(object):
                     note = values[3].strip()
                     tags = values[4].strip()
                     
+                    print("parsing json for word: {0}".format(word))
+                    
                     note_id = uuid.uuid4()
                     
                     json = None
@@ -62,6 +64,8 @@ class CSVParser(object):
                     german = values[2].strip()
                     gender = values[3].strip()
                     tags = values[4].strip()
+                    
+                    print("parsing json for word: {0}".format(word))
                     
                     note_id = uuid.uuid4()
                     
@@ -100,6 +104,8 @@ class CSVParser(object):
                     example = values[3].strip()
                     tags = values[4].strip()
                     
+                    print("parsing json for word: {0}".format(word))
+                    
                     note_id = uuid.uuid4()
                     
                     json = None
@@ -136,6 +142,8 @@ class CSVParser(object):
                     german = values[3].strip()
                     gender = values[4].strip()
                     tags = values[4].strip()
+                    
+                    print("parsing json for word: {0}".format(word))
                     
                     note_id = uuid.uuid4()
                     

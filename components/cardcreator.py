@@ -28,7 +28,7 @@ class CardCreator(object):
         counter = 1
         for card in cardsToAdd:
             print("inserting cards {0}/{1}".format(counter, total))
-            response = self.ankiconnector.create_card(card)
+            response = self.ankiconnector.post(card)
             print(response.content)
             counter = counter + 1
     

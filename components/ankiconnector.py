@@ -9,5 +9,5 @@ class AnkiConnector(object):
         self.address = address
         
         
-    def create_card(self, card_json):
-        return requests.post(self.address, json = card_json)
+    def post(self, json):
+        return requests.post(self.address, json = json)

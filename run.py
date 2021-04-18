@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*--
 
 import argparse
 from components.cardcreator import CardCreator

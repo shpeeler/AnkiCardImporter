@@ -53,17 +53,25 @@ class CSVParser(object):
         
         cardsToCreate = list()
         
+        first_line = True
         with codecs.open(file, 'r', 'utf-8') as f:
-            line = f.readline()[1:]
+            line = f.readline()
             while line:    
+                if(first_line):
+                    first_line = False
+                    line = f.readline()
+                    continue
+
                 values = line.split(';')
 
-                if len(values) == 5:
+                if len(values) == 7:
                     word = values[0].strip()
                     english = values[1].strip()
                     german = values[2].strip()
                     gender = values[3].strip()
                     tags = values[4].strip()
+                    definition = values[5].strip()
+                    example = values[6].strip()
                     
                     print("parsing json for word: {0}".format(word))
                     
@@ -73,9 +81,9 @@ class CSVParser(object):
                     
                     if tags:
                         tagslist = tags.split(',')
-                        json = self.builder.create_jsondict_fr("Repository::CustomVocab::French", "Vocab FR", note_id, gender, word, english, german, tagslist)
+                        json = self.builder.create_jsondict_fr("Repository::CustomVocab::French", "Vocab FR", note_id, gender, word, english, german, definition, example, tagslist)
                     else:
-                        json = self.builder.create_jsondict_fr("Repository::CustomVocab::French", "Vocab FR", note_id, gender, word, english, german)
+                        json = self.builder.create_jsondict_fr("Repository::CustomVocab::French", "Vocab FR", note_id, gender, word, english, german, definition, example)
                     
                     if json:
                         self.audiogenerator.speak(word)

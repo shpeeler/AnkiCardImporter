@@ -14,10 +14,15 @@ class CSVParser(object):
         
         cardsToCreate = list()
         
+        first_line = True
         with codecs.open(file, 'r', 'utf-8') as f:
-            line = f.readline()[1:]
+            line = f.readline()
             while line:    
                 values = line.split(';')
+                if(first_line):
+                    first_line = False
+                    line = f.readline()
+                    continue
 
                 if len(values) == 5:
                     word = values[0].strip()
@@ -137,19 +142,24 @@ class CSVParser(object):
     
     def parse_it(self, file):
         cardsToCreate = list()
+        first_line = True
         
         with codecs.open(file, 'r', 'utf-8') as f:
             line = f.readline()[1:]
             while line:    
                 values = line.split(';')
+                if(first_line):
+                    first_line = False
+                    line = f.readline()
+                    continue
 
-                if len(values) == 5:
+                if len(values) == 6:
                     word = values[0].strip()
                     french = values[1].strip()
                     english = values[2].strip()
                     german = values[3].strip()
                     gender = values[4].strip()
-                    tags = values[4].strip()
+                    tags = values[5].strip()
                     
                     print("parsing json for word: {0}".format(word))
                     

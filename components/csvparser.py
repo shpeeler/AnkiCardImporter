@@ -104,10 +104,15 @@ class CSVParser(object):
     def parse_tr(self, file):
         
         cardsToCreate = list()
-        
+        first_line = True
         with codecs.open(file, 'r', 'utf-8') as f:
-            line = f.readline()[1:]
+            line = f.readline()
             while line:    
+                if(first_line):
+                    first_line = False
+                    line = f.readline()
+                    continue
+                    
                 values = line.split(';')
 
                 if len(values) == 5:

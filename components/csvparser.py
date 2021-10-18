@@ -39,9 +39,9 @@ class CSVParser(object):
                     
                     if tags:
                         tagslist = tags.split(',')
-                        json = self.builder.create_jsondict_pl("Repository::CustomVocab::Polish", "Vocab PL", note_id, gender, word, translation, note, tagslist)
+                        json = self.builder.create_jsondict_pl("Repository::Vocab::Polish", "Vocab PL", note_id, gender, word, translation, note, tagslist)
                     else:
-                        json = self.builder.create_jsondict_pl("Repository::CustomVocab::Polish", "Vocab PL", note_id, gender, word, translation, note)
+                        json = self.builder.create_jsondict_pl("Repository::Vocab::Polish", "Vocab PL", note_id, gender, word, translation, note)
                     
                     if json:
                         self.audiogenerator.speak(word)
@@ -86,9 +86,9 @@ class CSVParser(object):
                     
                     if tags:
                         tagslist = tags.split(',')
-                        json = self.builder.create_jsondict_fr("Repository::CustomVocab::French", "Vocab FR", note_id, gender, word, english, german, definition, example, tagslist)
+                        json = self.builder.create_jsondict_fr("Repository::Vocab::French", "Vocab FR", note_id, gender, word, english, german, definition, example, tagslist)
                     else:
-                        json = self.builder.create_jsondict_fr("Repository::CustomVocab::French", "Vocab FR", note_id, gender, word, english, german, definition, example)
+                        json = self.builder.create_jsondict_fr("Repository::Vocab::French", "Vocab FR", note_id, gender, word, english, german, definition, example)
                     
                     if json:
                         self.audiogenerator.speak(word)
@@ -130,9 +130,9 @@ class CSVParser(object):
                     
                     if tags:
                         tagslist = tags.split(',')
-                        json = self.builder.create_jsondict_tr("Repository::CustomVocab::Turkish", "Vocab TR", note_id, word, translation, definition, example, tagslist)
+                        json = self.builder.create_jsondict_tr("Repository::Vocab::Turkish", "Vocab TR", note_id, word, translation, definition, example, tagslist)
                     else:
-                        json = self.builder.create_jsondict_tr("Repository::CustomVocab::Turkish", "Vocab TR", note_id, word, translation, definition, example)
+                        json = self.builder.create_jsondict_tr("Repository::Vocab::Turkish", "Vocab TR", note_id, word, translation, definition, example)
                     
                     if json:
                         self.audiogenerator.speak(word)
@@ -174,9 +174,9 @@ class CSVParser(object):
                     
                     if tags:
                         tagslist = tags.split(',')
-                        json = self.builder.create_jsondict_it("Repository::CustomVocab::Italian", "Vocab IT", note_id, gender, word, french, english, german, tagslist)
+                        json = self.builder.create_jsondict_it("Repository::Vocab::Italian", "Vocab IT", note_id, gender, word, french, english, german, tagslist)
                     else:
-                        json = self.builder.create_jsondict_it("Repository::CustomVocab::Italian", "Vocab IT", note_id, gender, word, french, english, german)
+                        json = self.builder.create_jsondict_it("Repository::Vocab::Italian", "Vocab IT", note_id, gender, word, french, english, german)
                     
                     if json:
                         self.audiogenerator.speak(word)

@@ -29,7 +29,7 @@ class JsonBuilder(object):
                                 "allowDuplicate": False,
                                 "duplicateScope": "deck",
                                 "duplicateScopeOptions": {
-                                    "deckName": "Repository::CustomVocab::Polish",
+                                    "deckName": "Repository::Vocab::Polish",
                                     "checkChildren": False
                                 }
                                 },
@@ -65,7 +65,7 @@ class JsonBuilder(object):
                                 "allowDuplicate": False,
                                 "duplicateScope": "deck",
                                 "duplicateScopeOptions": {
-                                    "deckName": "Repository::CustomVocab::Polish",
+                                    "deckName": "Repository::Vocab::Turkish",
                                     "checkChildren": False
                                 }
                                 },
@@ -103,7 +103,7 @@ class JsonBuilder(object):
                                 "allowDuplicate": False,
                                 "duplicateScope": "deck",
                                 "duplicateScopeOptions": {
-                                    "deckName": "Repository::CustomVocab::Polish",
+                                    "deckName": "Repository::Vocab::French",
                                     "checkChildren": False
                                 }
                                 },
@@ -141,7 +141,7 @@ class JsonBuilder(object):
                                 "allowDuplicate": False,
                                 "duplicateScope": "deck",
                                 "duplicateScopeOptions": {
-                                    "deckName": "Repository::CustomVocab::Polish",
+                                    "deckName": "Repository::Vocab::Italian",
                                     "checkChildren": False
                                 }
                                 },

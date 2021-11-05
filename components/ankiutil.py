@@ -2,14 +2,16 @@
 
 from .ankiconnector import AnkiConnector
 from .audiogenerator import AudioGenerator
+from .jsonbuilder import JsonBuilder
 from .csvparser import CSVParser
 
-class CardCreator(object):
+class AnkiUtil(object):
     
     def __init__(self, language, filedest, address):
         self.ankiconnector = AnkiConnector(address)
         self.audiogenerator = AudioGenerator(language, filedest)
-        self.csvparser = CSVParser(self.audiogenerator)
+        self.builder = JsonBuilder()
+        self.csvparser = CSVParser(self.audiogenerator, self.builder)
         self.language = language
         
     def create_cards_from_file(self, filesrc, skip_store):
@@ -31,7 +33,7 @@ class CardCreator(object):
             response = self.ankiconnector.post(card)
             print(response.content)
             counter = counter + 1
-    
+
     def _read_cards_from_file(self, filesrc):
         
         cardsToAdd = None

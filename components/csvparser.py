@@ -6,8 +6,8 @@ from .audiogenerator import AudioGenerator
 
 class CSVParser(object):
     
-    def __init__(self, generator):
-        self.builder = JsonBuilder()
+    def __init__(self, generator, builder):
+        self.builder = builder
         self.audiogenerator = generator
     
     def parse_pl(self, file):

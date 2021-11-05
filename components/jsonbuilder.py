@@ -154,6 +154,41 @@ class JsonBuilder(object):
                 
         return resultDict
      
+    def find_cards_by_deck(self, query):
+
+        resultDict = dict(
+            {
+                "action": "findNotes",
+                "version": 6,
+                "params": {
+                    "query": query
+                }
+            }
+        )
+
+        return resultDict
+
+    def add_audio_by_id(self, id, language, word):
+
+        audiofilename = "[sound:audio_{0}_{1}.mp3]".format(language, word)
+
+        resultDict = dict(
+            {
+                "action": "updateNoteFields",
+                "version": 6,
+                "params": {
+                    "note": {
+                        "id": str(id),
+                        "fields": {
+                            "Audio": audiofilename
+                        }
+                    }
+                }
+            }
+        )
+
+        return resultDict
+
     def _add_tags_to_jsondict(self, json, tags):
         
         if(tags != None):

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*--
 
 import argparse
-from components.cardcreator import CardCreator
+from components.ankiutil import AnkiUtil
 
 # parse args
 parser = argparse.ArgumentParser(description="Read Sentence")
@@ -19,5 +19,5 @@ if skip_store:
 
 print("arguments parsed")
 
-cardcreator = CardCreator(args.language, args.filedest, args.address)
-cardcreator.create_cards_from_file(args.filesrc, skip_store)
+ankiutil = AnkiUtil(args.language, args.filedest, args.address)
+ankiutil.create_cards_from_file(args.filesrc, skip_store)

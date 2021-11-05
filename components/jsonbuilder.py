@@ -192,7 +192,7 @@ class JsonBuilder(object):
                 "version": 6,
                 "params": {
                     "note": {
-                        "id": str(id),
+                        "id": id,
                         "fields": {
                             "Audio": audiofilename
                         }

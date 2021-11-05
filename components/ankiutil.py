@@ -34,6 +34,32 @@ class AnkiUtil(object):
             print(response.content)
             counter = counter + 1
 
+    def add_audio_to_card_in_deck(self, query, skip_store):
+
+        print(query)
+        
+        query_note_ids = self.builder.find_note_ids(query)
+        print(query_note_ids)
+
+        result_ids = self.ankiconnector.post(note_query)
+
+        query_note_info = self.builder.get_note_info(result_ids)
+        print(query_note_info)
+
+        result_note_info = self.ankiconnector.post(query_note_info)
+
+        counter = 1
+        for noteid in result_ids:
+            print("adding audio to card: {}/{}".format(counter, len(result_ids)))
+
+            print(noteid)
+
+            print(result_note_info[counter - 1])
+            
+            if counter == 5:
+                break
+
+
     def _read_cards_from_file(self, filesrc):
         
         cardsToAdd = None

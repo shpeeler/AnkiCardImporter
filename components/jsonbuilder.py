@@ -154,7 +154,7 @@ class JsonBuilder(object):
                 
         return resultDict
      
-    def find_cards_by_deck(self, query):
+    def find_note_ids(self, query):
 
         resultDict = dict(
             {
@@ -162,6 +162,20 @@ class JsonBuilder(object):
                 "version": 6,
                 "params": {
                     "query": query
+                }
+            }
+        )
+
+        return resultDict
+
+    def get_note_info(self, ids):
+
+        resultDict = dict(
+            {
+                "action": "notesInfo",
+                "version": 6,
+                "params": {
+                    "notes": ids
                 }
             }
         )
@@ -188,6 +202,7 @@ class JsonBuilder(object):
         )
 
         return resultDict
+
 
     def _add_tags_to_jsondict(self, json, tags):
         

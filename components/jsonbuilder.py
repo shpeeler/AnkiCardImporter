@@ -161,7 +161,7 @@ class JsonBuilder(object):
                 "action": "findNotes",
                 "version": 6,
                 "params": {
-                    "query": query
+                    "query": str(query)
                 }
             }
         )

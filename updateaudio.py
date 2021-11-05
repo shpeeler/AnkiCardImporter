@@ -20,3 +20,5 @@ if skip_store:
 print("arguments parsed")
 
 ankiutil = AnkiUtil(args.language, args.filedest, args.address)
+
+ankiutil.add_audio_to_card_in_deck(args.query, skip_store)

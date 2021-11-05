@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 
+import json
+import re
+
 from .ankiconnector import AnkiConnector
 from .audiogenerator import AudioGenerator
 from .jsonbuilder import JsonBuilder
@@ -36,28 +39,35 @@ class AnkiUtil(object):
 
     def add_audio_to_card_in_deck(self, query, skip_store):
 
-        print(query)
-        
         query_note_ids = self.builder.find_note_ids(query)
-        print(query_note_ids)
+        response_note_ids = self.ankiconnector.post(query_note_ids)
+        note_ids = json.loads(response_note_ids.content)["result"]
 
-        result_ids = self.ankiconnector.post(note_query)
 
-        query_note_info = self.builder.get_note_info(result_ids)
-        print(query_note_info)
+        query_note_info = self.builder.get_note_info(note_ids)
+        response_note_info = self.ankiconnector.post(query_note_info)
+        note_info = json.loads(response_note_info.content)["result"]
 
-        result_note_info = self.ankiconnector.post(query_note_info)
+        clean_re = re.compile('<.*?>')
 
         counter = 1
-        for noteid in result_ids:
-            print("adding audio to card: {}/{}".format(counter, len(result_ids)))
-
-            print(noteid)
-
-            print(result_note_info[counter - 1])
+        for each_info in note_info:
+            print("adding audio to card: {}/{}".format(counter, len(note_info)))
             
-            if counter == 5:
+            note_id = each_info["noteId"]
+            word = each_info["fields"]["Front"]["value"]
+            clean_word = re.sub(clean_re, '', word)
+
+            print("note id: {} word: {}".format(note_id, clean_word))
+
+            if skip_store:
+                print("skipping audio insert of {0} cards".format(len(note_info)))
+                return
+
+            if counter == 2:
                 break
+
+            counter = counter + 1
 
 
     def _read_cards_from_file(self, filesrc):

@@ -52,30 +52,22 @@ class AnkiUtil(object):
 
         counter = 1
         for each_info in note_info:
-            print("adding audio to card: {}/{}".format(counter, len(note_info)))
             
             note_id = each_info["noteId"]
             word = each_info["fields"]["Front"]["value"]
             tagless_word = re.sub(clean_re, '', word)
             clean_word = tagless_word.replace("&nbsp;", " ")
 
-
-            print("note id: {} word: {}".format(note_id, clean_word))
+            print("adding audio to card {} - {}/{}".format(clean_word, counter, len(note_info)))
 
             if skip_store:
                 print("skipping audio insert of {0} cards".format(len(note_info)))
                 return
 
-            if counter == 5:
-                break
-
             self.audiogenerator.speak(clean_word)
 
             query_add_audio = self.builder.add_audio_by_id(note_id, self.language, clean_word)
-            print(query_add_audio)
-
             response_add_audio = self.ankiconnector.post(query_add_audio)
-            print(response_add_audio)
             
             counter = counter + 1
 

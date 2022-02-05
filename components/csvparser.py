@@ -10,6 +10,55 @@ class CSVParser(object):
         self.builder = builder
         self.audiogenerator = generator
     
+    def parse_es(self, file):
+
+        cardsToCreate = list()
+        
+        counter = 1
+
+        first_line = True
+        with codecs.open(file, 'r', 'utf-8') as f:
+            line = f.readline()
+            while line:    
+                values = line.split(';')
+                if(first_line):
+                    first_line = False
+                    line = f.readline()
+                    continue
+
+                if len(values) == 5:
+                    word = values[0].strip()
+                    translation = values[1].strip()
+                    gender = values[2].strip()
+                    note = values[3].strip()
+                    tags = values[4].strip()
+                    
+                    print("Nr. {0} - parsing json for word: {1}".format(counter, word))
+                    
+                    note_id = uuid.uuid4()
+                    
+                    json = None
+                    
+                    if tags:
+                        tagslist = tags.split(',')
+                        json = self.builder.create_jsondict_es("Repository::Vocab::Spanish", "Vocab ES", note_id, gender, word, translation, note, tagslist)
+                    else:
+                        json = self.builder.create_jsondict_es("Repository::Vocab::Spanish", "Vocab ES", note_id, gender, word, translation, note)
+                    
+                    if json:
+                        self.audiogenerator.speak(word)
+                        cardsToCreate.append(json)
+                    
+                    counter = counter + 1
+                    line = f.readline()
+                else:
+                    print("invalid value count")
+                    raise Exception()
+        
+        return cardsToCreate
+
+
+
     def parse_pl(self, file):
         
         cardsToCreate = list()

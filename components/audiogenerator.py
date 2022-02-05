@@ -11,4 +11,6 @@ class AudioGenerator(object):
 
     def speak(self, sentence):
         tts = gTTS(sentence, lang=self.language)
-        tts.save("{0}\\audio_{1}_{2}.mp3".format(self.destination_path, self.language, sentence))
+
+        fileSentence = sentence.replace("?", "")
+        tts.save("{0}\\audio_{1}_{2}.mp3".format(self.destination_path, self.language, fileSentence))

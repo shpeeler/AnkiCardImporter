@@ -207,7 +207,7 @@ class CSVParser(object):
                     line = f.readline()
                     continue
 
-                if len(values) == 6:
+                if len(values) == 5:
                     word = values[0].strip()
                     translation = values[1].strip()
                     gender = values[2].strip()

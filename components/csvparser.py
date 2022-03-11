@@ -209,11 +209,10 @@ class CSVParser(object):
 
                 if len(values) == 6:
                     word = values[0].strip()
-                    french = values[1].strip()
-                    english = values[2].strip()
-                    german = values[3].strip()
-                    gender = values[4].strip()
-                    tags = values[5].strip()
+                    translation = values[1].strip()
+                    gender = values[2].strip()
+                    note = values[3].strip()
+                    tags = values[4].strip()
                     
                     print("parsing json for word: {0}".format(word))
                     
@@ -223,9 +222,9 @@ class CSVParser(object):
                     
                     if tags:
                         tagslist = tags.split(',')
-                        json = self.builder.create_jsondict_it("Repository::Vocab::Italian", "Vocab IT", note_id, gender, word, french, english, german, tagslist)
+                        json = self.builder.create_jsondict_it("Repository::Vocab::Italian", "Vocab IT", note_id, gender, word, translation, note, tagslist)
                     else:
-                        json = self.builder.create_jsondict_it("Repository::Vocab::Italian", "Vocab IT", note_id, gender, word, french, english, german)
+                        json = self.builder.create_jsondict_it("Repository::Vocab::Italian", "Vocab IT", note_id, gender, word, translation, note)
                     
                     if json:
                         self.audiogenerator.speak(word)

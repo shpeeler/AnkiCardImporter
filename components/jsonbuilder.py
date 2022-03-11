@@ -153,7 +153,7 @@ class JsonBuilder(object):
                 
         return resultDict
     
-    def create_jsondict_it(self, deck, card_type, note_id, gender, word, french, english, german, tags = None):
+    def create_jsondict_it(self, deck, card_type, note_id, gender, word, translation, note, tags = None):
         
         audiofilename = "[sound:audio_{0}_{1}.mp3]".format("it", word)
         
@@ -168,10 +168,9 @@ class JsonBuilder(object):
                                 "fields": {
                                     "Note ID": str(note_id),
                                     "Gender": gender,
-                                    "Italian": word,
-                                    "French": french,
-                                    "English": english,
-                                    "German": german,
+                                    "Word": word,
+                                    "Translation": translation,
+                                    "Note": note,
                                     "Audio": audiofilename,
                                 },
                             "options": {
@@ -239,7 +238,6 @@ class JsonBuilder(object):
         )
 
         return resultDict
-
 
     def _add_tags_to_jsondict(self, json, tags):
         

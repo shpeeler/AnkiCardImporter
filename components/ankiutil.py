@@ -37,7 +37,7 @@ class AnkiUtil(object):
             print(response.content)
             counter = counter + 1
 
-    def add_audio_to_card_in_deck(self, query, skip_store):
+    def add_audio_to_card_in_deck(self, query, skip_store, force):
 
         query_note_ids = self.builder.find_note_ids(query)
         response_note_ids = self.ankiconnector.post(query_note_ids)
@@ -54,15 +54,23 @@ class AnkiUtil(object):
         for each_info in note_info:
             
             note_id = each_info["noteId"]
-            word = each_info["fields"]["Front"]["value"]
+            word = each_info["fields"]["Word"]["value"]
+
+            audio = each_info["fields"]["Audio"]["value"]
+
             tagless_word = re.sub(clean_re, '', word)
             clean_word = tagless_word.replace("&nbsp;", " ")
+
+            if audio != "":
+                if force == False:
+                    #print("audio already set for word: {} - {}/{}".format(clean_word, counter, len(note_info)))
+                    continue
 
             print("adding audio to card {} - {}/{}".format(clean_word, counter, len(note_info)))
 
             if skip_store:
                 print("skipping audio insert of {0} cards".format(len(note_info)))
-                return
+                continue
 
             self.audiogenerator.speak(clean_word)
 

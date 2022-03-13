@@ -10,9 +10,12 @@ parser.add_argument("-d", "--filedest", help="destination")
 parser.add_argument("-q", "--query", help="specifies to which cards the audio is added")
 parser.add_argument("-a", "--address", help="endpoint")
 parser.add_argument("-s", "--skipstore", help="skips store procedure")
+parser.add_argument("-f", "--force", help="forces new audio entries")
+
 
 args = parser.parse_args()
 skip_store = args.skipstore == 'y'
+force = args.force == "y"
 
 if skip_store:
     print("skip store set, cards wont be generated")
@@ -21,4 +24,4 @@ print("arguments parsed")
 
 ankiutil = AnkiUtil(args.language, args.filedest, args.address)
 
-ankiutil.add_audio_to_card_in_deck(args.query, skip_store)
+ankiutil.add_audio_to_card_in_deck(args.query, skip_store, force)

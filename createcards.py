@@ -10,9 +10,11 @@ parser.add_argument("-f", "--filesrc", help="source")
 parser.add_argument("-d", "--filedest", help="destination")
 parser.add_argument("-a", "--address", help="endpoint")
 parser.add_argument("-s", "--skipstore", help="skips store procedure")
+parser.add_argument("-r", "--random", help="randomizes the import order")
 
 args = parser.parse_args()
 skip_store = args.skipstore == 'y'
+random = args.random == "y"
 
 if skip_store:
     print("skip store set, cards wont be generated")
@@ -20,4 +22,4 @@ if skip_store:
 print("arguments parsed")
 
 ankiutil = AnkiUtil(args.language, args.filedest, args.address)
-ankiutil.create_cards_from_file(args.filesrc, skip_store) 
+ankiutil.create_cards_from_file(args.filesrc, skip_store, random) 

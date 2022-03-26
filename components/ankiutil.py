@@ -7,6 +7,8 @@ from .ankiconnector import AnkiConnector
 from .audiogenerator import AudioGenerator
 from .jsonbuilder import JsonBuilder
 from .csvparser import CSVParser
+from random import shuffle
+
 
 class AnkiUtil(object):
     
@@ -17,7 +19,7 @@ class AnkiUtil(object):
         self.csvparser = CSVParser(self.audiogenerator, self.builder)
         self.language = language
         
-    def create_cards_from_file(self, filesrc, skip_store):
+    def create_cards_from_file(self, filesrc, skip_store, random):
         
         cardsToAdd = self._read_cards_from_file(filesrc)
         if not cardsToAdd:
@@ -25,11 +27,14 @@ class AnkiUtil(object):
             return
             
         total = len(cardsToAdd)
-        
+
         if skip_store:
             print("skipping insert of {0} cards".format(total))
             return
         
+        if random:
+            shuffle(cardsToAdd)
+
         counter = 1
         for card in cardsToAdd:
             print("inserting cards {0}/{1}".format(counter, total))

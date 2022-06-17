@@ -109,6 +109,10 @@ class AnkiUtil(object):
             print("starting parse in spanish mode")
             cardsToAdd = self.csvparser.parse_es(filesrc)
             
+        if(self.language == 'ar'):
+            print("starting parse in arabic mode")
+            cardsToAdd = self.csvparser.parse_ar(filesrc)
+
         print("reading finished: {0} cards found".format(len(cardsToAdd)))
         
         return cardsToAdd

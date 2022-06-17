@@ -5,6 +5,44 @@ class JsonBuilder(object):
     def __init__(self):
         pass
     
+    def create_jsondict_ar(self, deck, card_type, note_id, gender, word, plural, translation, note, tags = None):
+
+        audiofilename = "[sound:audio_{0}_{1}.mp3]".format("es", word)
+        
+        resultDict = dict( 
+                    {
+                    "action": "addNote",
+                    "version": 6,
+                    "params": {
+                        "note": {
+                                "deckName": deck,
+                                "modelName": card_type,
+                                "fields": {
+                                    "Note ID": str(note_id),
+                                    "Gender": gender,
+                                    "Word": word,
+                                    "Plural": plural,
+                                    "Translation": translation,
+                                    "Note": note,
+                                    "Audio": ""
+                                },
+                            "options": {
+                                "allowDuplicate": False,
+                                "duplicateScope": "deck",
+                                "duplicateScopeOptions": {
+                                    "deckName": "Repository::Vocab::Polish",
+                                    "checkChildren": False
+                                }
+                                },
+                            "tags": []
+                            }
+                        }
+                    })
+        
+        resultDict = self._add_tags_to_jsondict(resultDict, tags)
+                
+        return resultDict
+
     def create_jsondict_es(self, deck, card_type, note_id, gender, word, translation, note, tags = None):
 
         audiofilename = "[sound:audio_{0}_{1}.mp3]".format("es", word)

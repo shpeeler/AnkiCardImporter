@@ -1,51 +1,51 @@
-translation;gender;note;tags;word;plural
-of                  ;;;msa, preposition;مِنْ;
-and                 ;;;msa, conjunction;وَ;
-to                  ;;;msa, preposition;إِلَى;
-in                  ;;;msa, preposition;فِي;
-that                ;;;msa, conjunction;أَنْ;
-as, like            ;;;msa, conjunction;كَمَا;
-with                ;;;msa, preposition;مَعَ;
-I                   ;;;msa, pronoun;أَنَا;
-we                  ;;;msa, pronoun;نَحْنُ;
-you                 ;[m];;msa, pronoun;أَنْتَ;
-you                 ;[f];;msa, pronoun;أَنْتِ;
-you                 ;[d];;msa, pronoun;أَنْتُمَا;
-you                 ;[m pl];;msa, pronoun;أَنْتُمْ;
-you                 ;[f pl];;msa, pronoun;أَنْتُنَّ;
-he                  ;[m];;msa, pronoun;هُوَ;
-she                 ;[f];;msa, pronoun;هِيَ;
-the two of them     ;[d];;msa, pronoun;هُمَا;
-they                ;[m pl];;msa, pronoun;هُمْ;
-they                ;[f pl];;msa, pronoun;هُنَّ;
-this                ;[m];;msa, pronoun;هٰذَا;
-this                ;[f];;msa, pronoun;هٰذِهِ;
-word, speech        ;[f];;msa, noun;كَلِمَات;كَلِمَة
-but, however        ;;;msa, conjunction;لٰكِنَّ;
-everyone, each      ;[m];;msa, noun;كُلّ;
-when, while         ;;;msa, conjunction;عِنْدَمَا;
-there               ;;;msa, adverb;هُنَاكَ;
-here                ;;;msa, adverb;هُنَا;
-who, that, which    ;[f];;msa, pronoun;اَلَّذِي;
-who, that, which    ;[m];;msa, pronoun;اَلَّذِي;
-how                 ;;;msa, adverb;كَيْفَ;
-if                  ;;;msa, conjunction;إِذَا;
-above, on top of    ;;;msa, preposition;فَوْقَ;
-outside, exterior   ;[m];;msa, noun;خَارِج;
-outside, out of     ;;;msa, preposition;خَارِجَ;
-inside, interior    ;[m];;msa, noun;دَاخِل;
-inside              ;;;msa, preposition;دَاخِلَ;
-many, much, numerous;[m];;msa, adjective;كَثِير;
-many, much, numerous;[f];;msa, adjective;كَثِيرَة;
-few, little, scarce ;[m];;msa, adjective;قَلِيل;
-few, little, scarce ;[f];;msa, adjective;قَلِيلَة;
-then, afterward     ;;;msa, conjunction;ثُمَّ;
-these               ;[pl];;msa, pronoun;هٰؤُلَاءِ;
-so, thus, such      ;;;msa, adverb;هَٰكَذَا;
-some, part          ;[m];;msa, noun;بَعْض;
-time, period of time;[m];;msa, noun;أَوْقَات;وَقْت
-more, more often    ;;;msa, adverb;أَكْثَرَ;
-number, numeral     ;[m];;msa, noun;أَرْقَام;رَقْم
-no                  ;;;msa, pronoun;لَا;
-yes                 ;;;msa, adverb;نَعَمْ;
-way, road, path     ;[m/f];;msa, noun;طُرُق;طَرِيق
+translation;gender;note;tags;pronunciation;word;plural
+of                  ;;;msa, preposition;;مِنْ;
+and                 ;;;msa, conjunction;;وَ;
+to                  ;;;msa, preposition;;إِلَى;
+in                  ;;;msa, preposition;;فِي;
+that                ;;;msa, conjunction;;أَنْ;
+as, like            ;;;msa, conjunction;;كَمَا;
+with                ;;;msa, preposition;;مَعَ;
+I                   ;;;msa, pronoun;;أَنَا;
+we                  ;;;msa, pronoun;;نَحْنُ;
+you                 ;[m];;msa, pronoun;;أَنْتَ;
+you                 ;[f];;msa, pronoun;;أَنْتِ;
+you                 ;[d];;msa, pronoun;;أَنْتُمَا;
+you                 ;[m pl];;msa, pronoun;;أَنْتُمْ;
+you                 ;[f pl];;msa, pronoun;;أَنْتُنَّ;
+he                  ;[m];;msa, pronoun;;هُوَ;
+she                 ;[f];;msa, pronoun;;هِيَ;
+the two of them     ;[d];;msa, pronoun;;هُمَا;
+they                ;[m pl];;msa, pronoun;;هُمْ;
+they                ;[f pl];;msa, pronoun;;هُنَّ;
+this                ;[m];;msa, pronoun;;هٰذَا;
+this                ;[f];;msa, pronoun;;هٰذِهِ;
+word, speech        ;[f];;msa, noun;;كَلِمَات;كَلِمَة
+but, however        ;;;msa, conjunction;;لٰكِنَّ;
+everyone, each      ;[m];;msa, noun;;كُلّ;
+when, while         ;;;msa, conjunction;;عِنْدَمَا;
+there               ;;;msa, adverb;;هُنَاكَ;
+here                ;;;msa, adverb;;هُنَا;
+who, that, which    ;[f];;msa, pronoun;;اَلَّذِي;
+who, that, which    ;[m];;msa, pronoun;;اَلَّذِي;
+how                 ;;;msa, adverb;;كَيْفَ;
+if                  ;;;msa, conjunction;;إِذَا;
+above, on top of    ;;;msa, preposition;;فَوْقَ;
+outside, exterior   ;[m];;msa, noun;;خَارِج;
+outside, out of     ;;;msa, preposition;;خَارِجَ;
+inside, interior    ;[m];;msa, noun;;دَاخِل;
+inside              ;;;msa, preposition;;دَاخِلَ;
+many, much, numerous;[m];;msa, adjective;;كَثِير;
+many, much, numerous;[f];;msa, adjective;;كَثِيرَة;
+few, little, scarce ;[m];;msa, adjective;;قَلِيل;
+few, little, scarce ;[f];;msa, adjective;;قَلِيلَة;
+then, afterward     ;;;msa, conjunction;;ثُمَّ;
+these               ;[pl];;msa, pronoun;;هٰؤُلَاءِ;
+so, thus, such      ;;;msa, adverb;;هَٰكَذَا;
+some, part          ;[m];;msa, noun;;بَعْض;
+time, period of time;[m];;msa, noun;;أَوْقَات;وَقْت
+more, more often    ;;;msa, adverb;;أَكْثَرَ;
+number, numeral     ;[m];;msa, noun;;أَرْقَام;رَقْم
+no                  ;;;msa, pronoun;;لَا;
+yes                 ;;;msa, adverb;;نَعَمْ;
+way, road, path     ;[m/f];;msa, noun;;طُرُق;طَرِيق

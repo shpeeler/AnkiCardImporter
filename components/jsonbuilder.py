@@ -5,9 +5,10 @@ class JsonBuilder(object):
     def __init__(self):
         pass
     
-    def create_jsondict_ar(self, deck, card_type, note_id, gender, word, plural, translation, note, tags = None):
+    def create_jsondict_ar(self, deck, card_type, note_id, gender, word, plural, pronunciation, translation, note, tags = None):
 
-        audiofilename = "[sound:audio_{0}_{1}.mp3]".format("es", word)
+        audiofilename = "[sound:audio_{0}_{1}.mp3]".format("ar", word)
+        audiofilename_plural = "[sound:audio_{0}_{1}.mp3]".format("ar", plural)
         
         resultDict = dict( 
                     {
@@ -21,10 +22,11 @@ class JsonBuilder(object):
                                     "Note ID": str(note_id),
                                     "Gender": gender,
                                     "Word": word,
-                                    "Plural": plural,
+                                    "Plural": audiofilename_plural,
+                                    "Pronunciation": pronunciation,
                                     "Translation": translation,
                                     "Note": note,
-                                    "Audio": ""
+                                    "Audio": audiofilename
                                 },
                             "options": {
                                 "allowDuplicate": False,
@@ -268,6 +270,27 @@ class JsonBuilder(object):
                         "id": id,
                         "fields": {
                             "Audio": audiofilename
+                        }
+                    }
+                }
+            }
+        )
+
+        return resultDict
+
+    def add_audio_by_id_plural(self, id, language, word):
+
+        audiofilename = "[sound:audio_{0}_{1}.mp3]".format(language, word)
+
+        resultDict = dict(
+            {
+                "action": "updateNoteFields",
+                "version": 6,
+                "params": {
+                    "note": {
+                        "id": id,
+                        "fields": {
+                            "Audio Plural": audiofilename
                         }
                     }
                 }

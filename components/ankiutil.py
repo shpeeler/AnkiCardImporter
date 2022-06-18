@@ -2,6 +2,8 @@
 
 import json
 import re
+import arabic_reshaper
+from bidi.algorithm import get_display
 
 from .ankiconnector import AnkiConnector
 from .audiogenerator import AudioGenerator
@@ -42,12 +44,11 @@ class AnkiUtil(object):
             print(response.content)
             counter = counter + 1
 
-    def add_audio_to_card_in_deck(self, query, skip_store, force):
+    def add_audio_to_card_in_deck(self, query, skip_store, force, plural, reshape):
 
         query_note_ids = self.builder.find_note_ids(query)
         response_note_ids = self.ankiconnector.post(query_note_ids)
         note_ids = json.loads(response_note_ids.content)["result"]
-
 
         query_note_info = self.builder.get_note_info(note_ids)
         response_note_info = self.ankiconnector.post(query_note_info)
@@ -60,30 +61,51 @@ class AnkiUtil(object):
             
             note_id = each_info["noteId"]
             word = each_info["fields"]["Word"]["value"]
-
             audio = each_info["fields"]["Audio"]["value"]
-
-            tagless_word = re.sub(clean_re, '', word)
-            clean_word = tagless_word.replace("&nbsp;", " ")
-
-            if audio != "":
-                if force == False:
-                    #print("audio already set for word: {} - {}/{}".format(clean_word, counter, len(note_info)))
-                    continue
-
-            print("adding audio to card {} - {}/{}".format(clean_word, counter, len(note_info)))
-
-            if skip_store:
-                print("skipping audio insert of {0} cards".format(len(note_info)))
-                continue
-
-            self.audiogenerator.speak(clean_word)
-
-            query_add_audio = self.builder.add_audio_by_id(note_id, self.language, clean_word)
-            response_add_audio = self.ankiconnector.post(query_add_audio)
+            translation = each_info["fields"]["Translation"]["value"]
             
-            counter = counter + 1
+            print_word = word
+            if reshape == True:
+                reshaped_text = arabic_reshaper.reshape(word)
+                print_word = get_display(reshaped_text)
 
+            query_add_audio = None
+            query_add_audio_plural = None
+            
+            if audio == "" or force == True:
+                tagless_word = re.sub(clean_re, '', word)
+                clean_word = tagless_word.replace("&nbsp;", " ")
+
+                self.audiogenerator.speak(clean_word)
+                query_add_audio = self.builder.add_audio_by_id(note_id, self.language, clean_word)
+
+            if plural == True:
+                audio_plural = each_info["fields"]["Audio Plural"]["value"]
+                word_plural = each_info["fields"]["Plural"]["value"]
+
+                if word_plural != "" and (audio_plural == "" or force == True):
+                    plural_tagless_word = re.sub(clean_re, '', word_plural)
+                    plural_clean_word = plural_tagless_word.replace("&nbsp;", " ")
+
+                    self.audiogenerator.speak(plural_clean_word)
+                    query_add_audio_plural = self.builder.add_audio_by_id_plural(note_id, self.language, plural_clean_word)
+            
+            if skip_store:
+                    print("{}/{} skipped - {}".format(counter, len(note_info), print_word))
+                    counter = counter + 1
+                    continue
+            
+            if query_add_audio != None:
+                print("{}/{} audio added - {}".format(counter, len(note_info), print_word))
+                response_add_audio = self.ankiconnector.post(query_add_audio)
+
+            if query_add_audio_plural != None:
+                print("{}/{} plural added - {}".format(counter, len(note_info), print_word))
+
+                response_add_audio = self.ankiconnector.post(query_add_audio_plural)
+
+            print("{}/{} finished - {}".format(counter, len(note_info), print_word))
+            counter = counter + 1
 
     def _read_cards_from_file(self, filesrc):
         

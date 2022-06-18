@@ -26,13 +26,14 @@ class CSVParser(object):
                     line = f.readline()
                     continue
 
-                if len(values) == 6:
+                if len(values) == 7:
                     translation = values[0].strip()
                     gender = values[1].strip()
                     note = values[2].strip()
                     tags = values[3].strip()
-                    word = values[4].strip()
-                    plural = values[5].strip()
+                    pronunciation = values[4].strip()
+                    word = values[5].strip()
+                    plural = values[6].strip()
                     
                     print("Nr. {0} - parsing json for word: {1}".format(counter, word))
                     
@@ -42,12 +43,13 @@ class CSVParser(object):
                     
                     if tags:
                         tagslist = tags.split(',')
-                        json = self.builder.create_jsondict_ar("Repository::Vocab::Arabic", "Vocab AR", note_id, gender, word, plural, translation, note, tagslist)
+                        json = self.builder.create_jsondict_ar("Repository::Vocab::Arabic", "Vocab AR", note_id, gender, word, plural, pronunciation, translation, note, tagslist)
                     else:
-                        json = self.builder.create_jsondict_ar("Repository::Vocab::Arabic", "Vocab AR", note_id, gender, word, plural, translation, note)
+                        json = self.builder.create_jsondict_ar("Repository::Vocab::Arabic", "Vocab AR", note_id, gender, word, plural, pronunciation, translation, note)
                     
                     if json:
                         self.audiogenerator.speak(word)
+                        self.audiogenerator.speak(plural)
                         cardsToCreate.append(json)
                     
                     counter = counter + 1

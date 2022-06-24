@@ -10,279 +10,236 @@ class CSVParser(object):
         self.builder = builder
         self.audiogenerator = generator
     
-    def parse_ar(self, file):
+    def parse(self, file, language):
 
         cardsToCreate = list()
-        
         counter = 1
 
-        first_line = True
         with codecs.open(file, 'r', 'utf-8') as f:
-            line = f.readline()
-            while line:    
+            lines = f.readlines()[1:]
+            line_count = len(lines)
+
+            for line in lines:
                 values = line.split(';')
-                if(first_line):
-                    first_line = False
-                    line = f.readline()
-                    continue
 
-                if len(values) == 7:
-                    translation = values[0].strip()
-                    gender = values[1].strip()
-                    note = values[2].strip()
-                    tags = values[3].strip()
-                    pronunciation = values[4].strip()
-                    word = values[5].strip()
-                    plural = values[6].strip()
-                    
-                    print("Nr. {0} - parsing json for word: {1} - {2}".format(counter, translation, word))
-                    
-                    note_id = uuid.uuid4()
-                    
-                    json = None
-                    
-                    if tags:
-                        tagslist = tags.split(',')
-                        json = self.builder.create_jsondict_ar("Repository::Vocab::Arabic", "Vocab AR", note_id, gender, word, plural, pronunciation, translation, note, tagslist)
-                    else:
-                        json = self.builder.create_jsondict_ar("Repository::Vocab::Arabic", "Vocab AR", note_id, gender, word, plural, pronunciation, translation, note)
-                    
-                    if json:
-                        self.audiogenerator.speak(word)
+                print("{}/{} parsing...".format(counter, line_count))
 
-                        if plural != "" and plural != None:
-                            self.audiogenerator.speak(plural)
-                            
-                        cardsToCreate.append(json)
+                card = None
+                if(language == 'ar'):
+                    card = self.parse_ar(values)
+
+                if(language == 'pl'):
+                    card = self.parse_pl(values)
                     
-                    counter = counter + 1
-                    line = f.readline()
-                else:
-                    print("invalid value count: {0}".format(len(values)))
+                if(language == 'fr'):
+                    card = self.parse_fr(values)
+                    
+                if(language == 'it'):
+                    card = self.parse_it(values)
+                    
+                if(language == 'tr'):
+                    card = self.parse_tr(values)
+
+                if(language == 'es'):
+                    card = self.parse_es(values)
+
+                if card == None:
+                    print("card could not be parsed")
                     raise Exception()
-        
+
+                cardsToCreate.append(card)
+                counter = counter + 1
+
         return cardsToCreate
+
+    def parse_ar(self, values):
+
+        result = None
+        if len(values) == 7:
+            translation = values[0].strip()
+            gender = values[1].strip()
+            note = values[2].strip()
+            tags = values[3].strip()
+            pronunciation = values[4].strip()
+            word = values[5].strip()
+            plural = values[6].strip()
+            
+            note_id = uuid.uuid4()
+            
+            json = None
+            
+            if tags:
+                tagslist = tags.split(',')
+                json = self.builder.create_jsondict_ar("Repository::Vocab::Arabic", "Vocab AR", note_id, gender, word, plural, pronunciation, translation, note, tagslist)
+            else:
+                json = self.builder.create_jsondict_ar("Repository::Vocab::Arabic", "Vocab AR", note_id, gender, word, plural, pronunciation, translation, note)
+            
+            if json:
+                self.audiogenerator.speak(word)
+
+                if plural != "" and plural != None:
+                    self.audiogenerator.speak(plural)
+                    
+                result = json
+
+        else:
+            print("invalid value count: {0}".format(len(values)))
+            raise Exception()
+
+        return result
 
     def parse_es(self, file):
 
-        cardsToCreate = list()
+        result = None
+        if len(values) == 5:
+            word = values[0].strip()
+            translation = values[1].strip()
+            gender = values[2].strip()
+            note = values[3].strip()
+            tags = values[4].strip()
+            
+            note_id = uuid.uuid4()
+            
+            json = None
+            
+            if tags:
+                tagslist = tags.split(',')
+                json = self.builder.create_jsondict_es("Repository::Vocab::Spanish", "Vocab ES", note_id, gender, word, translation, note, tagslist)
+            else:
+                json = self.builder.create_jsondict_es("Repository::Vocab::Spanish", "Vocab ES", note_id, gender, word, translation, note)
+            
+            if json:
+                self.audiogenerator.speak(word)
+                result = json
+            
+        else:
+            print("invalid value count")
+            raise Exception()
+
+        return result
         
-        counter = 1
-
-        first_line = True
-        with codecs.open(file, 'r', 'utf-8') as f:
-            line = f.readline()
-            while line:    
-                values = line.split(';')
-                if(first_line):
-                    first_line = False
-                    line = f.readline()
-                    continue
-
-                if len(values) == 5:
-                    word = values[0].strip()
-                    translation = values[1].strip()
-                    gender = values[2].strip()
-                    note = values[3].strip()
-                    tags = values[4].strip()
-                    
-                    print("Nr. {0} - parsing json for word: {1}".format(counter, word))
-                    
-                    note_id = uuid.uuid4()
-                    
-                    json = None
-                    
-                    if tags:
-                        tagslist = tags.split(',')
-                        json = self.builder.create_jsondict_es("Repository::Vocab::Spanish", "Vocab ES", note_id, gender, word, translation, note, tagslist)
-                    else:
-                        json = self.builder.create_jsondict_es("Repository::Vocab::Spanish", "Vocab ES", note_id, gender, word, translation, note)
-                    
-                    if json:
-                        self.audiogenerator.speak(word)
-                        cardsToCreate.append(json)
-                    
-                    counter = counter + 1
-                    line = f.readline()
-                else:
-                    print("invalid value count")
-                    raise Exception()
-        
-        return cardsToCreate
-
     def parse_pl(self, file):
         
-        cardsToCreate = list()
-        
-        first_line = True
-        with codecs.open(file, 'r', 'utf-8') as f:
-            line = f.readline()
-            while line:    
-                values = line.split(';')
-                if(first_line):
-                    first_line = False
-                    line = f.readline()
-                    continue
+        result = None
+        if len(values) == 5:
+            word = values[0].strip()
+            translation = values[1].strip()
+            gender = values[2].strip()
+            note = values[3].strip()
+            tags = values[4].strip()
+            
+            note_id = uuid.uuid4()
+            
+            json = None
 
-                if len(values) == 5:
-                    word = values[0].strip()
-                    translation = values[1].strip()
-                    gender = values[2].strip()
-                    note = values[3].strip()
-                    tags = values[4].strip()
-                    
-                    print("parsing json for word: {0}".format(word))
-                    
-                    note_id = uuid.uuid4()
-                    
-                    json = None
-                    
-                    if tags:
-                        tagslist = tags.split(',')
-                        json = self.builder.create_jsondict_pl("Repository::Vocab::Polish", "Vocab PL", note_id, gender, word, translation, note, tagslist)
-                    else:
-                        json = self.builder.create_jsondict_pl("Repository::Vocab::Polish", "Vocab PL", note_id, gender, word, translation, note)
-                    
-                    if json:
-                        self.audiogenerator.speak(word)
-                        cardsToCreate.append(json)
-                    
-                    line = f.readline()
-                else:
-                    print("invalid value count")
-                    raise Exception()
+            if tags:
+                tagslist = tags.split(',')
+                json = self.builder.create_jsondict_pl("Repository::Vocab::Polish", "Vocab PL", note_id, gender, word, translation, note, tagslist)
+            else:
+                json = self.builder.create_jsondict_pl("Repository::Vocab::Polish", "Vocab PL", note_id, gender, word, translation, note)
+            
+            if json:
+                self.audiogenerator.speak(word)
+                result = json
+            
+        else:
+            print("invalid value count")
+            raise Exception()
         
-        return cardsToCreate
+        return result
 
     def parse_fr(self, file):
         
-        cardsToCreate = list()
-        
-        first_line = True
-        with codecs.open(file, 'r', 'utf-8') as f:
-            line = f.readline()
-            while line:    
-                if(first_line):
-                    first_line = False
-                    line = f.readline()
-                    continue
+        result = None
+        if len(values) == 6:
+            word = values[0].strip()
+            translation = values[1].strip()
+            gender = values[2].strip()
+            tags = values[3].strip()
+            definition = values[4].strip()
+            example = values[5].strip()
+            
+            print("parsing json for word: {0}".format(word))
+            
+            note_id = uuid.uuid4()
+            
+            json = None
+            
+            if tags:
+                tagslist = tags.split(',')
+                json = self.builder.create_jsondict_fr("Repository::Vocab::French", "Vocab FR Base", note_id, gender, word, translation, definition, example, tagslist)
+            else:
+                json = self.builder.create_jsondict_fr("Repository::Vocab::French", "Vocab FR Base", note_id, gender, word, translation, definition, example)
 
-                values = line.split(';')
-
-                if len(values) == 6:
-                    word = values[0].strip()
-                    translation = values[1].strip()
-                    gender = values[2].strip()
-                    tags = values[3].strip()
-                    definition = values[4].strip()
-                    example = values[5].strip()
-                    
-                    print("parsing json for word: {0}".format(word))
-                    
-                    note_id = uuid.uuid4()
-                    
-                    json = None
-                    
-                    if tags:
-                        tagslist = tags.split(',')
-                        json = self.builder.create_jsondict_fr("Repository::Vocab::French", "Vocab FR Base", note_id, gender, word, translation, definition, example, tagslist)
-                    else:
-                        json = self.builder.create_jsondict_fr("Repository::Vocab::French", "Vocab FR Base", note_id, gender, word, translation, definition, example)
-                    
-                    if json:
-                        self.audiogenerator.speak(word)
-                        cardsToCreate.append(json)
-                    
-                    line = f.readline()
-                else:
-                    print("invalid value count")
-                    raise Exception()
+            if json:
+                self.audiogenerator.speak(word)
+                result = json
+            
+        else:
+            print("invalid value count")
+            raise Exception()
         
-        return cardsToCreate
+        return result
     
     def parse_tr(self, file):
         
-        cardsToCreate = list()
-        first_line = True
-        with codecs.open(file, 'r', 'utf-8') as f:
-            line = f.readline()
-            while line:    
-                if(first_line):
-                    first_line = False
-                    line = f.readline()
-                    continue
-                    
-                values = line.split(';')
-
-                if len(values) == 5:
-                    word = values[0].strip()
-                    translation = values[1].strip()
-                    definition = values[2].strip()
-                    example = values[3].strip()
-                    tags = values[4].strip()
-                    
-                    print("parsing json for word: {0}".format(word))
-                    
-                    note_id = uuid.uuid4()
-                    
-                    json = None
-                    
-                    if tags:
-                        tagslist = tags.split(',')
-                        json = self.builder.create_jsondict_tr("Repository::Vocab::Turkish", "Vocab TR", note_id, word, translation, definition, example, tagslist)
-                    else:
-                        json = self.builder.create_jsondict_tr("Repository::Vocab::Turkish", "Vocab TR", note_id, word, translation, definition, example)
-                    
-                    if json:
-                        self.audiogenerator.speak(word)
-                        cardsToCreate.append(json)
-                    
-                    line = f.readline()
-                else:
-                    print("invalid value count")
-                    raise Exception()
+        result = None
+        if len(values) == 5:
+            word = values[0].strip()
+            translation = values[1].strip()
+            definition = values[2].strip()
+            example = values[3].strip()
+            tags = values[4].strip()
+            
+            print("parsing json for word: {0}".format(word))
+            
+            note_id = uuid.uuid4()
+            
+            json = None
+            
+            if tags:
+                tagslist = tags.split(',')
+                json = self.builder.create_jsondict_tr("Repository::Vocab::Turkish", "Vocab TR", note_id, word, translation, definition, example, tagslist)
+            else:
+                json = self.builder.create_jsondict_tr("Repository::Vocab::Turkish", "Vocab TR", note_id, word, translation, definition, example)
+            
+            if json:
+                self.audiogenerator.speak(word)
+                result = json
+        else:
+            print("invalid value count")
+            raise Exception()
         
-        return cardsToCreate
+        return result
     
     def parse_it(self, file):
-        cardsToCreate = list()
-        first_line = True
         
-        with codecs.open(file, 'r', 'utf-8') as f:
-            line = f.readline()[1:]
-            while line:    
-                values = line.split(';')
-                if(first_line):
-                    first_line = False
-                    line = f.readline()
-                    continue
-
-                if len(values) == 5:
-                    word = values[0].strip()
-                    translation = values[1].strip()
-                    gender = values[2].strip()
-                    note = values[3].strip()
-                    tags = values[4].strip()
-                    
-                    print("parsing json for word: {0}".format(word))
-                    
-                    note_id = uuid.uuid4()
-                    
-                    json = None
-                    
-                    if tags:
-                        tagslist = tags.split(',')
-                        json = self.builder.create_jsondict_it("Repository::Vocab::Italian", "Vocab IT", note_id, gender, word, translation, note, tagslist)
-                    else:
-                        json = self.builder.create_jsondict_it("Repository::Vocab::Italian", "Vocab IT", note_id, gender, word, translation, note)
-                    
-                    if json:
-                        self.audiogenerator.speak(word)
-                        cardsToCreate.append(json)
-                    
-                    line = f.readline()
-                else:
-                    print("invalid value count")
-                    raise Exception()
+        result = None
+        if len(values) == 5:
+            word = values[0].strip()
+            translation = values[1].strip()
+            gender = values[2].strip()
+            note = values[3].strip()
+            tags = values[4].strip()
+            
+            print("parsing json for word: {0}".format(word))
+            
+            note_id = uuid.uuid4()
+            
+            json = None
+            
+            if tags:
+                tagslist = tags.split(',')
+                json = self.builder.create_jsondict_it("Repository::Vocab::Italian", "Vocab IT", note_id, gender, word, translation, note, tagslist)
+            else:
+                json = self.builder.create_jsondict_it("Repository::Vocab::Italian", "Vocab IT", note_id, gender, word, translation, note)
+            
+            if json:
+                self.audiogenerator.speak(word)
+                result = json
+            
+        else:
+            print("invalid value count")
+            raise Exception()
         
-        return cardsToCreate
+        return result

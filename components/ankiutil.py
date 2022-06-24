@@ -27,7 +27,7 @@ class AnkiUtil(object):
         
     def create_cards_from_file(self):
         
-        cardsToAdd = self._read_cards_from_file(self.configmanager.FileSource)
+        cardsToAdd = self.csvparser.parse(self.configmanager.FileSource, self.configmanager.LanguageCode)
         if not cardsToAdd:
             print("error while reading the file: {0} with the language {1}".format(self.configmanager.FileSource, self.configmanager.LanguageCode))
             return
@@ -81,7 +81,7 @@ class AnkiUtil(object):
 
                 self.audiogenerator.speak(clean_word)
                 query_add_audio = self.builder.add_audio_by_id(note_id, self.configmanager.LanguageCode, clean_word)
-                print("{}/{} new audio for - {}".format(counter, len(note_info), print_word))
+                print("{}/{} new audio - {}".format(counter, len(note_info), print_word))
 
             if plural == True:
                 audio_plural = each_info["fields"]["Audio Plural"]["value"]
@@ -93,7 +93,7 @@ class AnkiUtil(object):
 
                     self.audiogenerator.speak(plural_clean_word)
                     query_add_audio_plural = self.builder.add_audio_by_id_plural(note_id, self.configmanager.LanguageCode, plural_clean_word)
-                    print("{}/{} new plural-audio for - {}".format(counter, len(note_info), print_word))
+                    print("{}/{} new plural-audio - {}".format(counter, len(note_info), print_word))
             
             if self.configmanager.SkipStore == False:
                     if query_add_audio != None:
@@ -104,27 +104,3 @@ class AnkiUtil(object):
 
             print("{}/{} - {}".format(counter, len(note_info), print_word))
             counter = counter + 1
-
-    def _read_cards_from_file(self, filesrc):
-        
-        cardsToAdd = None
-        
-        if(self.configmanager.LanguageCode == 'pl'):
-            cardsToAdd = self.csvparser.parse_pl(filesrc)
-            
-        if(self.configmanager.LanguageCode == 'fr'):
-            cardsToAdd = self.csvparser.parse_fr(filesrc)
-            
-        if(self.configmanager.LanguageCode == 'it'):
-            cardsToAdd = self.csvparser.parse_it(filesrc)
-            
-        if(self.configmanager.LanguageCode == 'tr'):
-            cardsToAdd = self.csvparser.parse_tr(filesrc)
-
-        if(self.configmanager.LanguageCode == 'es'):
-            cardsToAdd = self.csvparser.parse_es(filesrc)
-            
-        if(self.configmanager.LanguageCode == 'ar'):
-            cardsToAdd = self.csvparser.parse_ar(filesrc)
-        
-        return cardsToAdd

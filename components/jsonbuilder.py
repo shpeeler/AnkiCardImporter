@@ -8,7 +8,10 @@ class JsonBuilder(object):
     def create_jsondict_ar(self, deck, card_type, note_id, gender, word, plural, pronunciation, translation, note, tags = None):
 
         audiofilename = "[sound:audio_{0}_{1}.mp3]".format("ar", word)
-        audiofilename_plural = "[sound:audio_{0}_{1}.mp3]".format("ar", plural)
+
+        audiofilename_plural = ""
+        if plural != "" and plural != None:
+            audiofilename_plural = "[sound:audio_{0}_{1}.mp3]".format("ar", plural)
         
         resultDict = dict( 
                     {
@@ -22,11 +25,12 @@ class JsonBuilder(object):
                                     "Note ID": str(note_id),
                                     "Gender": gender,
                                     "Word": word,
-                                    "Plural": audiofilename_plural,
+                                    "Plural": plural,
                                     "Pronunciation": pronunciation,
                                     "Translation": translation,
                                     "Note": note,
-                                    "Audio": audiofilename
+                                    "Audio": audiofilename,
+                                    "Audio Plural": audiofilename_plural
                                 },
                             "options": {
                                 "allowDuplicate": False,

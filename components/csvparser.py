@@ -35,7 +35,7 @@ class CSVParser(object):
                     word = values[5].strip()
                     plural = values[6].strip()
                     
-                    print("Nr. {0} - parsing json for word: {1}".format(counter, word))
+                    print("Nr. {0} - parsing json for word: {1} - {2}".format(counter, translation, word))
                     
                     note_id = uuid.uuid4()
                     
@@ -49,13 +49,16 @@ class CSVParser(object):
                     
                     if json:
                         self.audiogenerator.speak(word)
-                        self.audiogenerator.speak(plural)
+
+                        if plural != "" and plural != None:
+                            self.audiogenerator.speak(plural)
+                            
                         cardsToCreate.append(json)
                     
                     counter = counter + 1
                     line = f.readline()
                 else:
-                    print("invalid value count")
+                    print("invalid value count: {0}".format(len(values)))
                     raise Exception()
         
         return cardsToCreate

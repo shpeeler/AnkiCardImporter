@@ -6,18 +6,27 @@
     {
         "ar": "C:\\git\\AnkiCardImporter\\files\\ar.csv",
         "fr": "C:\\git\\AnkiCardImporter\\files\\fr.csv",
-        "es": "C:\\git\\AnkiCardImporter\\files\\es.csv"
+        "es": "C:\\git\\AnkiCardImporter\\files\\es.csv",
+        "it": "C:\\git\\AnkiCardImporter\\files\\it.csv",
+        "tr": "C:\\git\\AnkiCardImporter\\files\\tr.csv",
+        "pl": "C:\\git\\AnkiCardImporter\\files\\pl.csv"
     },
     "query": 
     {
         "ar": "deck:Repository::Vocab::Arabic",
         "fr": "deck:Repository::Vocab::French",
-        "es": "deck:Repository::Vocab::Spanish"
+        "es": "deck:Repository::Vocab::Spanish",
+        "it": "deck:Repository::Vocab::Italian",
+        "tr": "deck:Repository::Vocab::Turkish",
+        "pl": "deck:Repository::Vocab::Polish"
     },
     "language_map":
     {
         "ar": "Arabic",
         "fr": "French",
-        "es": "Spanish"
+        "es": "Spanish",
+        "it": "Italian",
+        "tr": "Turkish",
+        "pl": "Polish"
     }
 }

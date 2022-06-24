@@ -7,9 +7,6 @@ from components.ankiutil import AnkiUtil
 # parse args
 parser = argparse.ArgumentParser(description="Read Sentence")
 parser.add_argument("-l", "--language", help="en/fr/es/it/pl/ro")
-parser.add_argument("-d", "--filedest", help="destination")
-parser.add_argument("-q", "--query", help="specifies to which cards the audio is added")
-parser.add_argument("-a", "--address", help="endpoint")
 parser.add_argument("-s", "--skipstore", help="skips store procedure")
 parser.add_argument("-f", "--force", help="forces new audio entries")
 parser.add_argument("-p", "--plural", help="enable if plural is present")

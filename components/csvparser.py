@@ -110,8 +110,6 @@ class CSVParser(object):
         
         return cardsToCreate
 
-
-
     def parse_pl(self, file):
         
         cardsToCreate = list()

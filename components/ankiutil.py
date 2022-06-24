@@ -5,48 +5,51 @@ import re
 import arabic_reshaper
 from bidi.algorithm import get_display
 
+from .config.configmanager import ConfigManager
 from .ankiconnector import AnkiConnector
 from .audiogenerator import AudioGenerator
 from .jsonbuilder import JsonBuilder
 from .csvparser import CSVParser
 from random import shuffle
 
-
 class AnkiUtil(object):
     
-    def __init__(self, language, filedest, address):
-        self.ankiconnector = AnkiConnector(address)
-        self.audiogenerator = AudioGenerator(language, filedest)
+    configmanager = None
+
+    def __init__(self, configmanager):
+
+        self.configmanager = configmanager
+
+        self.ankiconnector = AnkiConnector(self.configmanager.Address)
+        self.audiogenerator = AudioGenerator(self.configmanager.LanguageCode, self.configmanager.FileDestination)
         self.builder = JsonBuilder()
         self.csvparser = CSVParser(self.audiogenerator, self.builder)
-        self.language = language
         
-    def create_cards_from_file(self, filesrc, skip_store, random):
+    def create_cards_from_file(self):
         
-        cardsToAdd = self._read_cards_from_file(filesrc)
+        cardsToAdd = self._read_cards_from_file(self.configmanager.FileSource)
         if not cardsToAdd:
-            print("error while reading the file: {0} with the language {1}".format(filesrc, self.language))
+            print("error while reading the file: {0} with the language {1}".format(self.configmanager.FileSource, self.configmanager.LanguageCode))
             return
             
         total = len(cardsToAdd)
 
-        if skip_store:
+        if self.configmanager.SkipStore:
             print("skipping insert of {0} cards".format(total))
             return
         
-        if random:
+        if self.configmanager.RandomInsert:
             shuffle(cardsToAdd)
 
         counter = 1
         for card in cardsToAdd:
-            print("inserting cards {0}/{1}".format(counter, total))
             response = self.ankiconnector.post(card)
-            print(response.content)
+            print("{0}/{1} finished - {2}".format(counter, total, response.content))
             counter = counter + 1
 
-    def add_audio_to_card_in_deck(self, query, skip_store, force, plural, reshape):
+    def add_audio_to_card_in_deck(self, force = False, plural = False, reshape = False):
 
-        query_note_ids = self.builder.find_note_ids(query)
+        query_note_ids = self.builder.find_note_ids(self.configmanager.Query)
         response_note_ids = self.ankiconnector.post(query_note_ids)
         note_ids = json.loads(response_note_ids.content)["result"]
 
@@ -77,7 +80,8 @@ class AnkiUtil(object):
                 clean_word = tagless_word.replace("&nbsp;", " ")
 
                 self.audiogenerator.speak(clean_word)
-                query_add_audio = self.builder.add_audio_by_id(note_id, self.language, clean_word)
+                query_add_audio = self.builder.add_audio_by_id(note_id, self.configmanager.LanguageCode, clean_word)
+                print("{}/{} new audio for - {}".format(counter, len(note_info), print_word))
 
             if plural == True:
                 audio_plural = each_info["fields"]["Audio Plural"]["value"]
@@ -88,53 +92,39 @@ class AnkiUtil(object):
                     plural_clean_word = plural_tagless_word.replace("&nbsp;", " ")
 
                     self.audiogenerator.speak(plural_clean_word)
-                    query_add_audio_plural = self.builder.add_audio_by_id_plural(note_id, self.language, plural_clean_word)
+                    query_add_audio_plural = self.builder.add_audio_by_id_plural(note_id, self.configmanager.LanguageCode, plural_clean_word)
+                    print("{}/{} new plural-audio for - {}".format(counter, len(note_info), print_word))
             
-            if skip_store:
-                    print("{}/{} skipped - {}".format(counter, len(note_info), print_word))
-                    counter = counter + 1
-                    continue
-            
-            if query_add_audio != None:
-                print("{}/{} audio added - {}".format(counter, len(note_info), print_word))
-                response_add_audio = self.ankiconnector.post(query_add_audio)
+            if self.configmanager.SkipStore == False:
+                    if query_add_audio != None:
+                        response_add_audio = self.ankiconnector.post(query_add_audio)
 
-            if query_add_audio_plural != None:
-                print("{}/{} plural added - {}".format(counter, len(note_info), print_word))
+                    if query_add_audio_plural != None:
+                        response_add_audio = self.ankiconnector.post(query_add_audio_plural)
 
-                response_add_audio = self.ankiconnector.post(query_add_audio_plural)
-
-            print("{}/{} finished - {}".format(counter, len(note_info), print_word))
+            print("{}/{} - {}".format(counter, len(note_info), print_word))
             counter = counter + 1
 
     def _read_cards_from_file(self, filesrc):
         
         cardsToAdd = None
         
-        if(self.language == 'pl'):
-            print("starting parser in polish mode")
+        if(self.configmanager.LanguageCode == 'pl'):
             cardsToAdd = self.csvparser.parse_pl(filesrc)
             
-        if(self.language == 'fr'):
-            print("starting parser in french mode")
+        if(self.configmanager.LanguageCode == 'fr'):
             cardsToAdd = self.csvparser.parse_fr(filesrc)
             
-        if(self.language == 'it'):
-            print("starting parser in italian mode")
+        if(self.configmanager.LanguageCode == 'it'):
             cardsToAdd = self.csvparser.parse_it(filesrc)
             
-        if(self.language == 'tr'):
-            print("starting parser in turkish mode")
+        if(self.configmanager.LanguageCode == 'tr'):
             cardsToAdd = self.csvparser.parse_tr(filesrc)
 
-        if(self.language == 'es'):
-            print("starting parse in spanish mode")
+        if(self.configmanager.LanguageCode == 'es'):
             cardsToAdd = self.csvparser.parse_es(filesrc)
             
-        if(self.language == 'ar'):
-            print("starting parse in arabic mode")
+        if(self.configmanager.LanguageCode == 'ar'):
             cardsToAdd = self.csvparser.parse_ar(filesrc)
-
-        print("reading finished: {0} cards found".format(len(cardsToAdd)))
         
         return cardsToAdd

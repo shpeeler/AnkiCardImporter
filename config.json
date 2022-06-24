@@ -1,0 +1,23 @@
+{
+    "address": "http://localhost:8765",
+    "file_destination": "C:\\Users\\are\\AppData\\Roaming\\Anki2\\User 1\\collection.media",
+    "file_destination_test": "C:\\Temp",
+    "file_source": 
+    {
+        "ar": "C:\\git\\AnkiCardImporter\\files\\ar.csv",
+        "fr": "C:\\git\\AnkiCardImporter\\files\\fr.csv",
+        "es": "C:\\git\\AnkiCardImporter\\files\\es.csv"
+    },
+    "query": 
+    {
+        "ar": "deck:Repository::Vocab::Arabic",
+        "fr": "deck:Repository::Vocab::French",
+        "es": "deck:Repository::Vocab::Spanish"
+    },
+    "language_map":
+    {
+        "ar": "Arabic",
+        "fr": "French",
+        "es": "Spanish"
+    }
+}

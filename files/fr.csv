@@ -1,1 +1,10 @@
-word;english;german;gender;tags;definition;example
+﻿word;translation;gender;tags;definition;example
+méduse;Qualle;[f];noun;;
+baleine;Wal;[m];noun;;
+phoque;Robbe;[f];noun;;
+morse;Walross;[n];noun;;
+mure;Brombeere;[f];noun;;
+front;Stirn;[f];noun;;
+boulanger;Bäcker;[m];noun;;
+nombrile;Bauchnabel;[m];noun;;
+nouer;binden, zubinden;;verb;;

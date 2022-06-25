@@ -88,7 +88,7 @@ class CSVParser(object):
 
         return result
 
-    def parse_es(self, file):
+    def parse_es(self, values):
 
         result = None
         if len(values) == 5:
@@ -118,7 +118,7 @@ class CSVParser(object):
 
         return result
         
-    def parse_pl(self, file):
+    def parse_pl(self, values):
         
         result = None
         if len(values) == 5:
@@ -148,7 +148,7 @@ class CSVParser(object):
         
         return result
 
-    def parse_fr(self, file):
+    def parse_fr(self, values):
         
         result = None
         if len(values) == 6:
@@ -158,8 +158,6 @@ class CSVParser(object):
             tags = values[3].strip()
             definition = values[4].strip()
             example = values[5].strip()
-            
-            print("parsing json for word: {0}".format(word))
             
             note_id = uuid.uuid4()
             
@@ -181,7 +179,7 @@ class CSVParser(object):
         
         return result
     
-    def parse_tr(self, file):
+    def parse_tr(self, values):
         
         result = None
         if len(values) == 5:
@@ -190,8 +188,6 @@ class CSVParser(object):
             definition = values[2].strip()
             example = values[3].strip()
             tags = values[4].strip()
-            
-            print("parsing json for word: {0}".format(word))
             
             note_id = uuid.uuid4()
             
@@ -212,7 +208,7 @@ class CSVParser(object):
         
         return result
     
-    def parse_it(self, file):
+    def parse_it(self, values):
         
         result = None
         if len(values) == 5:
@@ -221,8 +217,6 @@ class CSVParser(object):
             gender = values[2].strip()
             note = values[3].strip()
             tags = values[4].strip()
-            
-            print("parsing json for word: {0}".format(word))
             
             note_id = uuid.uuid4()
             

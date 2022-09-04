@@ -9,6 +9,7 @@ parser = argparse.ArgumentParser(description="Read Sentence")
 parser.add_argument("-l", "--language", help="ar/es/pl/fr/tr/it")
 parser.add_argument("-s", "--skipstore", help="skips store procedure")
 parser.add_argument("-r", "--random", help="randomizes the import order")
+parser.add_argument("-e", "--existing", help="enables check for existing cards - currently only compatible with active decks")
 parser.add_argument("-params", "--params", help="prints existing parameters")
 
 args = parser.parse_args()
@@ -23,11 +24,12 @@ if args.language == None:
 
 skip_store = args.skipstore == 'y'
 random = args.random == "y"
+check_existing = args.existing == "y"
 
 configmanager = None
 with open ('.\components\config\config.json') as file:
         config = json.load(file)
-        configmanager = ConfigManager(config, args.language, skip_store, random)
+        configmanager = ConfigManager(config, args.language, skip_store, random, check_existing)
         
 configmanager.print_config()
 

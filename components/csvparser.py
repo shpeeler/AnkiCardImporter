@@ -6,9 +6,11 @@ from .audiogenerator import AudioGenerator
 
 class CSVParser(object):
     
-    def __init__(self, generator, builder):
+    def __init__(self, generator, builder, existing_cards):
         self.builder = builder
         self.audiogenerator = generator
+        self.existing_cards = existing_cards
+        print(len(existing_cards))
     
     def parse(self, file, language):
 
@@ -43,11 +45,9 @@ class CSVParser(object):
                 if(language == 'es'):
                     card = self.parse_es(values)
 
-                if card == None:
-                    print("card could not be parsed")
-                    raise Exception()
-
-                cardsToCreate.append(card)
+                if card != None:
+                    cardsToCreate.append(card)
+                    
                 counter = counter + 1
 
         return cardsToCreate
@@ -63,9 +63,13 @@ class CSVParser(object):
             pronunciation = values[4].strip()
             word = values[5].strip()
             plural = values[6].strip()
-            
+
             note_id = uuid.uuid4()
             
+            if self.existing_cards != None and word in self.existing_cards:
+                print("card {0} exists already".format(word))
+                return None
+
             json = None
             
             if tags:
@@ -100,6 +104,10 @@ class CSVParser(object):
             
             note_id = uuid.uuid4()
             
+            if self.existing_cards != None and word in self.existing_cards:
+                print("card {0} exists already".format(word))
+                return None
+
             json = None
             
             if tags:
@@ -130,6 +138,10 @@ class CSVParser(object):
             
             note_id = uuid.uuid4()
             
+            if self.existing_cards != None and word in self.existing_cards:
+                print("card {0} exists already".format(word))
+                return None
+
             json = None
 
             if tags:
@@ -161,6 +173,10 @@ class CSVParser(object):
             
             note_id = uuid.uuid4()
             
+            if self.existing_cards != None and word in self.existing_cards:
+                print("card {0} exists already".format(word))
+                return None
+
             json = None
             
             if tags:
@@ -191,6 +207,10 @@ class CSVParser(object):
             
             note_id = uuid.uuid4()
             
+            if self.existing_cards != None and word in self.existing_cards:
+                print("card {0} exists already".format(word))
+                return None
+
             json = None
             
             if tags:
@@ -220,6 +240,10 @@ class CSVParser(object):
             
             note_id = uuid.uuid4()
             
+            if self.existing_cards != None and word in self.existing_cards:
+                print("card {0} exists already".format(word))
+                return None
+
             json = None
             
             if tags:

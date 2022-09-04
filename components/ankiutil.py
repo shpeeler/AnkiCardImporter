@@ -23,7 +23,12 @@ class AnkiUtil(object):
         self.ankiconnector = AnkiConnector(self.configmanager.Address)
         self.audiogenerator = AudioGenerator(self.configmanager.LanguageCode, self.configmanager.FileDestination)
         self.builder = JsonBuilder()
-        self.csvparser = CSVParser(self.audiogenerator, self.builder)
+
+        existing_cards = None
+        if self.configmanager.CheckExisting == True:
+            existing_cards = self._get_existing_card_names()
+
+        self.csvparser = CSVParser(self.audiogenerator, self.builder, existing_cards)
         
     def create_cards_from_file(self):
         
@@ -32,6 +37,8 @@ class AnkiUtil(object):
             print("error while reading the file: {0} with the language {1}".format(self.configmanager.FileSource, self.configmanager.LanguageCode))
             return
             
+        return
+
         total = len(cardsToAdd)
 
         if self.configmanager.SkipStore:
@@ -65,9 +72,8 @@ class AnkiUtil(object):
 
             print("{} - {}, {}".format(counter, word, translation))
 
-    def add_audio_to_card_in_deck(self, force = False, plural = False, reshape = False):
-
-        query_note_ids = self.builder.find_note_ids(self.configmanager.Query)
+    def _load_cards_by_query(self, query):
+        query_note_ids = self.builder.find_note_ids(query)
         response_note_ids = self.ankiconnector.post(query_note_ids)
         note_ids = json.loads(response_note_ids.content)["result"]
 
@@ -75,6 +81,31 @@ class AnkiUtil(object):
         response_note_info = self.ankiconnector.post(query_note_info)
         note_info = json.loads(response_note_info.content)["result"]
 
+        return note_info
+
+    def _get_existing_card_names(self):
+        result = list()
+        
+        cards_repo = self._load_cards_by_query(self.configmanager.Query)
+        cards_deck = self._load_cards_by_query(self.configmanager.QueryDeck)
+
+        result = self._return_names_from_info_clean(cards_repo) + self._return_names_from_info_clean(cards_deck)
+
+        return result
+
+    def _return_names_from_info_clean(self, note_info):
+        result = list()
+
+        for each_info in note_info:
+            word = each_info["fields"]["Word"]["value"]
+            word_clean = word.replace("<div>", "").replace("</div>", "")
+
+            result.append(word_clean)
+
+        return result
+
+    def add_audio_to_card_in_deck(self, force = False, plural = False, reshape = False):
+        note_info = _load_cards_by_query(self.configmanager.Query)
         clean_re = re.compile('<.*?>')
 
         counter = 1

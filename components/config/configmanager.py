@@ -30,4 +30,4 @@ class ConfigManager(object):
             self.FileDestination = config_json["file_destination_test"]
 
     def print_config(self):
-        print("\nLanguage = {} ({})\nSkip-Store = {}\nRandom-Insert = {}\nCheckExisting = {}\nAddress = {}\nFile-Source = {}\nFile-Destination = {}\nQuery = {}\n".format(self.Language, self.LanguageCode.upper(), self.SkipStore, self.RandomInsert, self.CheckExisting, self.Address, self.FileSource, self.FileDestination, self.Query))
+        print("\nLanguage = {} ({})\nSkip-Store = {}\nRandom-Insert = {}\nCheckExisting = {}\nAddress = {}\nFile-Source = {}\nFile-Destination = {}\nQuery-Repository = {}\nQuery-Deck = {}\n".format(self.Language, self.LanguageCode.upper(), self.SkipStore, self.RandomInsert, self.CheckExisting, self.Address, self.FileSource, self.FileDestination, self.Query, self.QueryDeck))

@@ -47,6 +47,24 @@ class AnkiUtil(object):
             print("{0}/{1} finished - {2}".format(counter, total, response.content))
             counter = counter + 1
 
+    def clean_card(self):
+        query_note_ids = self.builder.find_note_ids(self.configmanager.NoteType)
+        response_note_ids = self.ankiconnector.post(query_note_ids)
+        note_ids = json.loads(response_note_ids.content)["result"]
+
+        query_note_info = self.builder.get_note_info(note_ids)
+        response_note_info = self.ankiconnector.post(query_note_info)
+        note_info = json.loads(response_note_info.content)["result"]
+
+        counter = 1
+        for each_info in note_info:
+
+            note_id = each_info["noteId"]
+            word = each_info["fields"]["Word"]["value"]
+            translation = each_info["fields"]["Translation"]["value"]
+
+            print("{} - {}, {}".format(counter, word, translation))
+
     def add_audio_to_card_in_deck(self, force = False, plural = False, reshape = False):
 
         query_note_ids = self.builder.find_note_ids(self.configmanager.Query)

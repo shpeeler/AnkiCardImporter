@@ -29,7 +29,7 @@ plural = args.plural == "y"
 reshape = args.reshape == "y"
 
 configmanager = None
-with open ('.\config.json') as file:
+with open ('.\components\config\config.json') as file:
         config = json.load(file)
         configmanager = ConfigManager(config, args.language, skip_store)
 

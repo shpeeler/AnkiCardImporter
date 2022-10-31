@@ -10,7 +10,6 @@ class CSVParser(object):
         self.builder = builder
         self.audiogenerator = generator
         self.existing_cards = existing_cards
-        print(len(existing_cards))
     
     def parse(self, file, language):
 

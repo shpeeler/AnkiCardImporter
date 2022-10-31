@@ -37,8 +37,6 @@ class AnkiUtil(object):
             print("error while reading the file: {0} with the language {1}".format(self.configmanager.FileSource, self.configmanager.LanguageCode))
             return
             
-        return
-
         total = len(cardsToAdd)
 
         if self.configmanager.SkipStore:
@@ -97,12 +95,42 @@ class AnkiUtil(object):
         result = list()
 
         for each_info in note_info:
-            word = each_info["fields"]["Word"]["value"]
+            word = self._get_word_base(each_info)
+
+            if word == None:
+                word = self._get_word_fr(each_info)
+            
+            if word == None:
+                word = self._get_word_es(each_info)
+
+            if word == None:
+                raise Exception("field value coult not be found for: {0}".format(each_info))
+
             word_clean = word.replace("<div>", "").replace("</div>", "")
 
             result.append(word_clean)
 
         return result
+
+    def _get_word_base(self, note_info):
+        try:
+            return note_info["fields"]["Word"]["value"]
+        except:
+            return None
+
+    def _get_word_fr(self, note_info):
+        try:
+            return note_info["fields"]["French"]["value"]
+        except:
+            return None
+
+    def _get_word_es(self, note_info):
+        try:
+            return note_info["fields"]["Spanish"]["value"]
+        except:
+            return None
+
+    
 
     def add_audio_to_card_in_deck(self, force = False, plural = False, reshape = False):
         note_info = _load_cards_by_query(self.configmanager.Query)

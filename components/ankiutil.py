@@ -131,9 +131,8 @@ class AnkiUtil(object):
             return None
 
     
-
     def add_audio_to_card_in_deck(self, force = False, plural = False, reshape = False):
-        note_info = _load_cards_by_query(self.configmanager.Query)
+        note_info = self._load_cards_by_query(self.configmanager.Query)
         clean_re = re.compile('<.*?>')
 
         counter = 1

@@ -13,12 +13,12 @@
     },
     "query_repo": 
     {
-        "fr": "deck:Repository::Vocab::French",
-        "es": "deck:Repository::Vocab::Spanish",
-        "it": "deck:Repository::Vocab::Italian",
-        "pl": "deck:Repository::Vocab::Polish",
-        "ar": "deck:Repository::Vocab::Arabic",
-        "tr": "deck:Repository::Vocab::Turkish"
+        "fr": "deck:Backlog::Vocab::French",
+        "es": "deck:Backlog::Vocab::Spanish",
+        "it": "deck:Backlog::Vocab::Italian",
+        "pl": "deck:Backlog::Vocab::Polish",
+        "ar": "deck:Backlog::Vocab::Arabic",
+        "tr": "deck:Backlog::Vocab::Turkish"
     },
     "query_deck":
     {
@@ -26,7 +26,7 @@
         "fr": "deck:Active::FR::Vocab",
         "es": "deck:Active::ES::Vocab",
         "pl": "note:Vocab PL",
-        "ar": "deck:Inactive::AR::Vocab",
+        "ar": "deck:Active::AR::Vocab",
         "tr": "deck:Active::TR::Vocab"
     },
     "language_map":

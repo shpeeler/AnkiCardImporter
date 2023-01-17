@@ -73,9 +73,9 @@ class CSVParser(object):
             
             if tags:
                 tagslist = tags.split(',')
-                json = self.builder.create_jsondict_ar("Repository::Vocab::Arabic", "Vocab AR", note_id, gender, word, plural, pronunciation, translation, note, tagslist)
+                json = self.builder.create_jsondict_ar("Backlog::Vocab::Arabic", "Vocab AR", note_id, gender, word, plural, pronunciation, translation, note, tagslist)
             else:
-                json = self.builder.create_jsondict_ar("Repository::Vocab::Arabic", "Vocab AR", note_id, gender, word, plural, pronunciation, translation, note)
+                json = self.builder.create_jsondict_ar("Backlog::Vocab::Arabic", "Vocab AR", note_id, gender, word, plural, pronunciation, translation, note)
             
             if json:
                 self.audiogenerator.speak(word)

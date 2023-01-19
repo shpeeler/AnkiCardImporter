@@ -4,12 +4,12 @@
     "file_destination_test": "C:\\Temp",
     "file_source": 
     {
-        "fr": "C:\\git\\AnkiCardImporter\\files\\fr.csv",
-        "es": "C:\\git\\AnkiCardImporter\\files\\es.csv",
-        "it": "C:\\git\\AnkiCardImporter\\files\\it.csv",
-        "pl": "C:\\git\\AnkiCardImporter\\files\\pl.csv",
-        "ar": "C:\\git\\AnkiCardImporter\\files\\ar.csv",
-        "tr": "C:\\git\\AnkiCardImporter\\files\\tr.csv"
+        "fr": "C:\\gdrive\\vok\\fr.csv",
+        "es": "C:\\gdrive\\vok\\es.csv",
+        "it": "C:\\gdrive\\vok\\it.csv",
+        "pl": "C:\\gdrive\\vok\\pl.csv",
+        "ar": "C:\\gdrive\\vok\\ar.csv",
+        "tr": "C:\\gdrive\\vok\\tr.csv"
     },
     "query_repo": 
     {
@@ -25,7 +25,7 @@
         "it": "deck:Active::IT::Vocab",
         "fr": "deck:Active::FR::Vocab",
         "es": "deck:Active::ES::Vocab",
-        "pl": "note:Vocab PL",
+        "pl": "note:Active::PL::Vocab",
         "ar": "deck:Active::AR::Vocab",
         "tr": "deck:Active::TR::Vocab"
     },

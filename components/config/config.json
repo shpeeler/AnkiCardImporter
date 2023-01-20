@@ -9,7 +9,8 @@
         "it": "C:\\gdrive\\vok\\it.csv",
         "pl": "C:\\gdrive\\vok\\pl.csv",
         "ar": "C:\\gdrive\\vok\\ar.csv",
-        "tr": "C:\\gdrive\\vok\\tr.csv"
+        "tr": "C:\\gdrive\\vok\\tr.csv",
+        "ro": "C:\\gdrive\\vok\\ro.csv"
     },
     "file_source_sentence": 
     {
@@ -18,7 +19,8 @@
         "it": "C:\\gdrive\\vok\\it_sentences.csv",
         "pl": "C:\\gdrive\\vok\\pl_sentences.csv",
         "ar": "C:\\gdrive\\vok\\ar_sentences.csv",
-        "tr": "C:\\gdrive\\vok\\tr_sentences.csv"
+        "tr": "C:\\gdrive\\vok\\tr_sentences.csv",
+        "ro": "C:\\gdrive\\vok\\ro_sentences.csv"
     },
     "query_repo": 
     {
@@ -27,7 +29,8 @@
         "it": "deck:Backlog::Vocab::Italian",
         "pl": "deck:Backlog::Vocab::Polish",
         "ar": "deck:Backlog::Vocab::Arabic",
-        "tr": "deck:Backlog::Vocab::Turkish"
+        "tr": "deck:Backlog::Vocab::Turkish",
+        "ro": "deck:Backlog::Vocab::Romanian"
     },
     "query_repo_sentence": 
     {
@@ -36,7 +39,8 @@
         "it": "deck:Backlog::Sentences::Italian",
         "pl": "deck:Backlog::Sentences::Polish",
         "ar": "deck:Backlog::Sentences::Arabic",
-        "tr": "deck:Backlog::Sentences::Turkish"
+        "tr": "deck:Backlog::Sentences::Turkish",
+        "ro": "deck:Backlog::Sentences::Romanian"
     },
     "deck":
     {
@@ -45,25 +49,28 @@
         "es": "Backlog::Sentences::Spanish",
         "pl": "Backlog::Sentences::Polish",
         "ar": "Backlog::Sentences::Arabic",
-        "tr": "Backlog::Sentences::Turkish"
+        "tr": "Backlog::Sentences::Turkish",
+        "ro": "Backlog::Sentences::Romanian"
     },
     "query_deck":
     {
         "it": "deck:Active::IT::Vocab",
         "fr": "deck:Active::FR::Vocab",
         "es": "deck:Active::ES::Vocab",
-        "pl": "note:Active::PL::Vocab",
+        "pl": "deck:Active::PL::Vocab",
         "ar": "deck:Active::AR::Vocab",
-        "tr": "deck:Active::TR::Vocab"
+        "tr": "deck:Active::TR::Vocab",
+        "ro": "deck:Active::RO::Vocab"
     },
     "query_deck_sentence":
     {
         "it": "deck:Active::IT::Sentences",
         "fr": "deck:Active::FR::Sentences",
         "es": "deck:Active::ES::Sentences",
-        "pl": "note:Active::PL::Sentences",
+        "pl": "deck:Active::PL::Sentences",
         "ar": "deck:Active::AR::Sentences",
-        "tr": "deck:Active::TR::Sentences"
+        "tr": "deck:Active::TR::Sentences",
+        "ro": "deck:Active::RO::Sentences"
     },
     "language_map":
     {
@@ -72,6 +79,7 @@
         "es": "Spanish",
         "it": "Italian",
         "tr": "Turkish",
-        "pl": "Polish"
+        "pl": "Polish",
+        "ro": "Romanian"
     }
 }

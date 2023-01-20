@@ -102,12 +102,6 @@ class AnkiUtil(object):
             word = self._get_word_base(each_info)
 
             if word == None:
-                word = self._get_word_fr(each_info)
-            
-            if word == None:
-                word = self._get_word_es(each_info)
-
-            if word == None:
                 raise Exception("field value coult not be found for: {0}".format(each_info))
 
             word_clean = word.replace("<div>", "").replace("</div>", "")
@@ -122,19 +116,6 @@ class AnkiUtil(object):
         except:
             return None
 
-    def _get_word_fr(self, note_info):
-        try:
-            return note_info["fields"]["French"]["value"]
-        except:
-            return None
-
-    def _get_word_es(self, note_info):
-        try:
-            return note_info["fields"]["Spanish"]["value"]
-        except:
-            return None
-
-    
     def add_audio_to_card_in_deck(self, force = False, plural = False, reshape = False):
         note_info = self._load_cards_by_query(self.configmanager.Query)
         clean_re = re.compile('<.*?>')
@@ -145,7 +126,6 @@ class AnkiUtil(object):
             note_id = each_info["noteId"]
             word = each_info["fields"]["Word"]["value"]
             audio = each_info["fields"]["Audio"]["value"]
-            translation = each_info["fields"]["Translation"]["value"]
             
             print_word = word
             if reshape == True:

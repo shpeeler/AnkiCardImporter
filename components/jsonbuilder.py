@@ -39,6 +39,44 @@ class JsonBuilder(object):
                         
         return resultDict
 
+    def create_jsondict_word(self, deck, card_type, language, note_id, word, translation, word_pl, translation_pl, gender, tags, note, example):
+
+        audio = "[sound:audio_{0}_{1}.mp3]".format(language, word)
+        audio_pl = ""
+        
+        if word_pl != None and word_pl != "":
+            audio_pl = "[sound:audio_{0}_{1}.mp3]".format(language, word_pl)
+
+        resultDict = dict( 
+                    {
+                    "action": "addNote",
+                    "version": 6,
+                    "params": {
+                        "note": {
+                                "deckName": deck,
+                                "modelName": card_type,
+                                "fields": {
+                                    "Note ID": str(note_id),
+                                    "Word": word,
+                                    "Word Plural": word_pl,
+                                    "Translation": translation,
+                                    "Translation Plural": translation_pl,
+                                    "Gender": gender,
+                                    "Example": example,
+                                    "Note": note,
+                                    "Audio": audio,
+                                    "Audio Plural": audio_pl
+                                },
+                            "tags": []
+                            }
+                        }
+                    })
+
+        if tags != None and tags != "":
+            resultDict = self._add_tags_to_jsondict(resultDict, tags)
+
+        return resultDict
+
     def create_jsondict_ar(self, deck, card_type, note_id, gender, word, plural, pronunciation, translation, note, tags = None):
 
         audiofilename = "[sound:audio_{0}_{1}.mp3]".format("ar", word)
@@ -70,7 +108,7 @@ class JsonBuilder(object):
                                 "allowDuplicate": False,
                                 "duplicateScope": "deck",
                                 "duplicateScopeOptions": {
-                                    "deckName": "Backlog::Vocab::Arabic",
+                                    "deckName": "Default",
                                     "checkChildren": False
                                 }
                                 },
@@ -79,7 +117,8 @@ class JsonBuilder(object):
                         }
                     })
         
-        resultDict = self._add_tags_to_jsondict(resultDict, tags)
+        if tags != None and tags != "":
+            resultDict = self._add_tags_to_jsondict(resultDict, tags)
                 
         return resultDict
 

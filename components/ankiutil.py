@@ -35,7 +35,7 @@ class AnkiUtil(object):
         if phrase_mode:
             cardsToAdd = self.csvparser.parse_sentence(self.configmanager.FileSource, self.configmanager.LanguageCode, self.configmanager.Deck)
         else:
-            cardsToAdd = self.csvparser.parse(self.configmanager.FileSource, self.configmanager.LanguageCode)
+            cardsToAdd = self.csvparser.parse_word(self.configmanager.FileSource, self.configmanager.LanguageCode, self.configmanager.Deck)
             
         if not cardsToAdd:
             print("error while reading the file: {0} with the language {1}".format(self.configmanager.FileSource, self.configmanager.LanguageCode))
@@ -57,7 +57,7 @@ class AnkiUtil(object):
             counter = counter + 1
 
     def clean_card(self):
-        query_note_ids = self.builder.find_note_ids(self.configmanager.NoteType)
+        query_note_ids = self.builder.find_note_ids(self.configmanager.QueryDeck)
         response_note_ids = self.ankiconnector.post(query_note_ids)
         note_ids = json.loads(response_note_ids.content)["result"]
 
@@ -72,7 +72,20 @@ class AnkiUtil(object):
             word = each_info["fields"]["Word"]["value"]
             translation = each_info["fields"]["Translation"]["value"]
 
-            print("{} - {}, {}".format(counter, word, translation))
+            if "<div>" in word:
+
+                word_clean = word.replace("<div>", "").replace("</div>", "")
+
+                print("{} - {} -> {}".format(counter, word, word_clean))
+
+                update_json = self.builder.update_name(note_id, word_clean)
+
+                if self.configmanager.SkipStore == True:
+                    continue
+                
+                self.ankiconnector.post(update_json)
+            
+            counter = counter + 1
 
     def _load_cards_by_query(self, query):
         query_note_ids = self.builder.find_note_ids(query)
@@ -145,7 +158,7 @@ class AnkiUtil(object):
 
             if plural == True:
                 audio_plural = each_info["fields"]["Audio Plural"]["value"]
-                word_plural = each_info["fields"]["Plural"]["value"]
+                word_plural = each_info["fields"]["Word Plural"]["value"]
 
                 if word_plural != "" and (audio_plural == "" or force == True):
                     plural_tagless_word = re.sub(clean_re, '', word_plural)

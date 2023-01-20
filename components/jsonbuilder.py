@@ -76,235 +76,6 @@ class JsonBuilder(object):
             resultDict = self._add_tags_to_jsondict(resultDict, tags)
 
         return resultDict
-
-    def create_jsondict_ar(self, deck, card_type, note_id, gender, word, plural, pronunciation, translation, note, tags = None):
-
-        audiofilename = "[sound:audio_{0}_{1}.mp3]".format("ar", word)
-
-        audiofilename_plural = ""
-        if plural != "" and plural != None:
-            audiofilename_plural = "[sound:audio_{0}_{1}.mp3]".format("ar", plural)
-        
-        resultDict = dict( 
-                    {
-                    "action": "addNote",
-                    "version": 6,
-                    "params": {
-                        "note": {
-                                "deckName": deck,
-                                "modelName": card_type,
-                                "fields": {
-                                    "Note ID": str(note_id),
-                                    "Gender": gender,
-                                    "Word": word,
-                                    "Plural": plural,
-                                    "Pronunciation": pronunciation,
-                                    "Translation": translation,
-                                    "Note": note,
-                                    "Audio": audiofilename,
-                                    "Audio Plural": audiofilename_plural
-                                },
-                            "options": {
-                                "allowDuplicate": False,
-                                "duplicateScope": "deck",
-                                "duplicateScopeOptions": {
-                                    "deckName": "Default",
-                                    "checkChildren": False
-                                }
-                                },
-                            "tags": []
-                            }
-                        }
-                    })
-        
-        if tags != None and tags != "":
-            resultDict = self._add_tags_to_jsondict(resultDict, tags)
-                
-        return resultDict
-
-    def create_jsondict_es(self, deck, card_type, note_id, gender, word, translation, note, tags = None):
-
-        audiofilename = "[sound:audio_{0}_{1}.mp3]".format("es", word)
-        
-        resultDict = dict( 
-                    {
-                    "action": "addNote",
-                    "version": 6,
-                    "params": {
-                        "note": {
-                                "deckName": deck,
-                                "modelName": card_type,
-                                "fields": {
-                                    "Note ID": str(note_id),
-                                    "Gender": gender,
-                                    "Word": word,
-                                    "Translation": translation,
-                                    "Note": note,
-                                    "Audio": audiofilename
-                                },
-                            "options": {
-                                "allowDuplicate": False,
-                                "duplicateScope": "deck",
-                                "duplicateScopeOptions": {
-                                    "deckName": "Backlog::Vocab::Spanish",
-                                    "checkChildren": False
-                                }
-                                },
-                            "tags": []
-                            }
-                        }
-                    })
-        
-        resultDict = self._add_tags_to_jsondict(resultDict, tags)
-                
-        return resultDict
-
-    def create_jsondict_pl(self, deck, card_type, note_id, gender, word, translation, note, tags = None):
-        
-        audiofilename = "[sound:audio_{0}_{1}.mp3]".format("pl", word)
-        
-        resultDict = dict( 
-                    {
-                    "action": "addNote",
-                    "version": 6,
-                    "params": {
-                        "note": {
-                                "deckName": deck,
-                                "modelName": card_type,
-                                "fields": {
-                                    "Note ID": str(note_id),
-                                    "Gender": gender,
-                                    "Word": word,
-                                    "German": translation,
-                                    "Note": note,
-                                    "Audio": audiofilename
-                                },
-                            "options": {
-                                "allowDuplicate": False,
-                                "duplicateScope": "deck",
-                                "duplicateScopeOptions": {
-                                    "deckName": "Backlog::Vocab::Polish",
-                                    "checkChildren": False
-                                }
-                                },
-                            "tags": []
-                            }
-                        }
-                    })
-        
-        resultDict = self._add_tags_to_jsondict(resultDict, tags)
-                
-        return resultDict
-    
-    def create_jsondict_tr(self, deck, card_type, note_id, word, translation, definition, example, tags = None):
-        audiofilename = "[sound:audio_{0}_{1}.mp3]".format("tr", word)
-        
-        resultDict = dict( 
-                    {
-                    "action": "addNote",
-                    "version": 6,
-                    "params": {
-                        "note": {
-                                "deckName": deck,
-                                "modelName": card_type,
-                                "fields": {
-                                    "Note ID": str(note_id),
-                                    "Word": word,
-                                    "Translation": translation,
-                                    "Definition": definition,
-                                    "Example": example,
-                                    "Audio": audiofilename,
-                                },
-                            "options": {
-                                "allowDuplicate": False,
-                                "duplicateScope": "deck",
-                                "duplicateScopeOptions": {
-                                    "deckName": "Backlog::Vocab::Turkish",
-                                    "checkChildren": False
-                                }
-                                },
-                            "tags": []
-                            }
-                        }
-                    })
-        
-        resultDict = self._add_tags_to_jsondict(resultDict, tags)
-                
-        return resultDict
-    
-    def create_jsondict_fr(self, deck, card_type, note_id, gender, word, translation, definition, example, tags = None):
-        audiofilename = "[sound:audio_{0}_{1}.mp3]".format("fr", word)
-        
-        resultDict = dict( 
-                    {
-                    "action": "addNote",
-                    "version": 6,
-                    "params": {
-                        "note": {
-                                "deckName": deck,
-                                "modelName": card_type,
-                                "fields": {
-                                    "Note ID": str(note_id),
-                                    "Gender": gender,
-                                    "Word": word,
-                                    "Translation": translation,
-                                    "Audio": audiofilename,
-                                    "Definition": definition,
-                                    "Example": example
-                                },
-                            "options": {
-                                "allowDuplicate": False,
-                                "duplicateScope": "deck",
-                                "duplicateScopeOptions": {
-                                    "deckName": "Backlog::Vocab::French",
-                                    "checkChildren": False
-                                }
-                                },
-                            "tags": []
-                            }
-                        }
-                    })
-        
-        resultDict = self._add_tags_to_jsondict(resultDict, tags)
-                
-        return resultDict
-    
-    def create_jsondict_it(self, deck, card_type, note_id, gender, word, translation, note, tags = None):
-        
-        audiofilename = "[sound:audio_{0}_{1}.mp3]".format("it", word)
-        
-        resultDict = dict( 
-                    {
-                    "action": "addNote",
-                    "version": 6,
-                    "params": {
-                        "note": {
-                                "deckName": deck,
-                                "modelName": card_type,
-                                "fields": {
-                                    "Note ID": str(note_id),
-                                    "Gender": gender,
-                                    "Word": word,
-                                    "Translation": translation,
-                                    "Note": note,
-                                    "Audio": audiofilename,
-                                },
-                            "options": {
-                                "allowDuplicate": False,
-                                "duplicateScope": "deck",
-                                "duplicateScopeOptions": {
-                                    "deckName": "Backlog::Vocab::Italian",
-                                    "checkChildren": False
-                                }
-                                },
-                            "tags": []
-                            }
-                        }
-                    })
-        
-        resultDict = self._add_tags_to_jsondict(resultDict, tags)
-                
-        return resultDict
      
     def find_note_ids(self, query):
 
@@ -347,6 +118,25 @@ class JsonBuilder(object):
                         "id": id,
                         "fields": {
                             "Audio": audiofilename
+                        }
+                    }
+                }
+            }
+        )
+
+        return resultDict
+
+    def update_name(self, id, new_name):
+
+        resultDict = dict(
+            {
+                "action": "updateNoteFields",
+                "version": 6,
+                "params": {
+                    "note": {
+                        "id": id,
+                        "fields": {
+                            "Word": new_name
                         }
                     }
                 }

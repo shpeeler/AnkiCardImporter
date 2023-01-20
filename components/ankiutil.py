@@ -30,9 +30,13 @@ class AnkiUtil(object):
 
         self.csvparser = CSVParser(self.audiogenerator, self.builder, existing_cards)
         
-    def create_cards_from_file(self):
+    def create_cards_from_file(self, phrase_mode):
         
-        cardsToAdd = self.csvparser.parse(self.configmanager.FileSource, self.configmanager.LanguageCode)
+        if phrase_mode:
+            cardsToAdd = self.csvparser.parse_sentence(self.configmanager.FileSource, self.configmanager.LanguageCode, self.configmanager.Deck)
+        else:
+            cardsToAdd = self.csvparser.parse(self.configmanager.FileSource, self.configmanager.LanguageCode)
+            
         if not cardsToAdd:
             print("error while reading the file: {0} with the language {1}".format(self.configmanager.FileSource, self.configmanager.LanguageCode))
             return

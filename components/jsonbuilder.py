@@ -5,6 +5,40 @@ class JsonBuilder(object):
     def __init__(self):
         pass
     
+    def create_jsondict_sentence(self, deck, card_type, language, note_id, sentence, translation, note):
+
+        audiofilename = "[sound:audio_{0}_{1}.mp3]".format(language, note_id)
+
+        resultDict = dict( 
+                    {
+                    "action": "addNote",
+                    "version": 6,
+                    "params": {
+                        "note": {
+                                "deckName": deck,
+                                "modelName": card_type,
+                                "fields": {
+                                    "Note ID": str(note_id),
+                                    "Sentence": sentence,
+                                    "Translation": translation,
+                                    "Note": note,
+                                    "Audio": audiofilename,
+                                },
+                            "options": {
+                                "allowDuplicate": False,
+                                "duplicateScope": "deck",
+                                "duplicateScopeOptions": {
+                                    "deckName": deck,
+                                    "checkChildren": False
+                                }
+                                },
+                            "tags": []
+                            }
+                        }
+                    })
+                        
+        return resultDict
+
     def create_jsondict_ar(self, deck, card_type, note_id, gender, word, plural, pronunciation, translation, note, tags = None):
 
         audiofilename = "[sound:audio_{0}_{1}.mp3]".format("ar", word)
@@ -36,7 +70,7 @@ class JsonBuilder(object):
                                 "allowDuplicate": False,
                                 "duplicateScope": "deck",
                                 "duplicateScopeOptions": {
-                                    "deckName": "Repository::Vocab::Polish",
+                                    "deckName": "Backlog::Vocab::Arabic",
                                     "checkChildren": False
                                 }
                                 },
@@ -73,7 +107,7 @@ class JsonBuilder(object):
                                 "allowDuplicate": False,
                                 "duplicateScope": "deck",
                                 "duplicateScopeOptions": {
-                                    "deckName": "Repository::Vocab::Polish",
+                                    "deckName": "Backlog::Vocab::Spanish",
                                     "checkChildren": False
                                 }
                                 },
@@ -110,7 +144,7 @@ class JsonBuilder(object):
                                 "allowDuplicate": False,
                                 "duplicateScope": "deck",
                                 "duplicateScopeOptions": {
-                                    "deckName": "Repository::Vocab::Polish",
+                                    "deckName": "Backlog::Vocab::Polish",
                                     "checkChildren": False
                                 }
                                 },
@@ -146,7 +180,7 @@ class JsonBuilder(object):
                                 "allowDuplicate": False,
                                 "duplicateScope": "deck",
                                 "duplicateScopeOptions": {
-                                    "deckName": "Repository::Vocab::Turkish",
+                                    "deckName": "Backlog::Vocab::Turkish",
                                     "checkChildren": False
                                 }
                                 },
@@ -183,7 +217,7 @@ class JsonBuilder(object):
                                 "allowDuplicate": False,
                                 "duplicateScope": "deck",
                                 "duplicateScopeOptions": {
-                                    "deckName": "Repository::Vocab::French",
+                                    "deckName": "Backlog::Vocab::French",
                                     "checkChildren": False
                                 }
                                 },
@@ -220,7 +254,7 @@ class JsonBuilder(object):
                                 "allowDuplicate": False,
                                 "duplicateScope": "deck",
                                 "duplicateScopeOptions": {
-                                    "deckName": "Repository::Vocab::Italian",
+                                    "deckName": "Backlog::Vocab::Italian",
                                     "checkChildren": False
                                 }
                                 },

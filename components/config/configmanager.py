@@ -7,19 +7,34 @@ class ConfigManager(object):
     FileSource = None
     LanguageCode = None
     Language = None
+    Deck = None
     Query = None
     QueryDeck = None
     SkipStore = False
     RandomInsert = False
     CheckExisting = False
 
-    def __init__(self, config_json, language, test = False, random = False, existing = False):
+    def __init__(self, config_json, language, test = False, random = False, existing = False, phrase_mode = False):
         self.LanguageCode = language
         self.Language = config_json["language_map"][language.lower()]
         self.Address = config_json["address"]
-        self.FileSource = config_json["file_source"][language.lower()]
-        self.Query = config_json["query_repo"][language.lower()]
-        self.QueryDeck = config_json["query_deck"][language.lower()]
+        
+        if phrase_mode:
+            self.FileSource = config_json["file_source_sentence"][language.lower()]
+        else:
+            self.FileSource = config_json["file_source"][language.lower()]
+
+        if phrase_mode:
+            self.Query = config_json["query_repo_sentence"][language.lower()]
+        else:
+            self.Query = config_json["query_repo"][language.lower()]
+
+        if phrase_mode:
+            self.QueryDeck = config_json["query_deck_sentence"][language.lower()]
+        else:
+            self.QueryDeck = config_json["query_deck"][language.lower()]
+            
+        self.Deck = config_json["deck"][language.lower()]
         self.SkipStore = test
         self.RandomInsert = random
         self.CheckExisting = existing

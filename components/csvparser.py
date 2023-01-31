@@ -61,15 +61,14 @@ class CSVParser(object):
 
                 print("{}/{} parsing...".format(counter, line_count))
 
-                if len(values) == 8:
+                if len(values) == 7:
                     word = values[0]
-                    translation = values[1]
-                    word_pl = values[2]
-                    translation_pl = values[3]
-                    gender = values[4]
-                    tags = values[5]
-                    note = values[6]
-                    example = values[7]
+                    word_pl = values[1]
+                    translation = values[2]
+                    gender = values[3]
+                    tags = values[4]
+                    note = values[5]
+                    example = values[6]
 
                     note_id = uuid.uuid4()
 
@@ -77,7 +76,7 @@ class CSVParser(object):
                         print("card {0} exists already".format(word))
                         continue
 
-                    json = self.builder.create_jsondict_word(deck, "Word", language, note_id, word, translation, word_pl, translation_pl, gender, tags, note, example)
+                    json = self.builder.create_jsondict_word(deck, "Vocab", language, note_id, word, translation, word_pl, gender, tags, note, example)
 
                     if json:
                         self.audiogenerator.speak(word)                        

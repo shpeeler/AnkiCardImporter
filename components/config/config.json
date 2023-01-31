@@ -10,7 +10,8 @@
         "pl": "C:\\gdrive\\vok\\pl.csv",
         "ar": "C:\\gdrive\\vok\\ar.csv",
         "tr": "C:\\gdrive\\vok\\tr.csv",
-        "ro": "C:\\gdrive\\vok\\ro.csv"
+        "ro": "C:\\gdrive\\vok\\ro.csv",
+        "sv": "C:\\gdrive\\vok\\sv.csv"
     },
     "file_source_sentence": 
     {
@@ -20,7 +21,8 @@
         "pl": "C:\\gdrive\\vok\\pl_sentences.csv",
         "ar": "C:\\gdrive\\vok\\ar_sentences.csv",
         "tr": "C:\\gdrive\\vok\\tr_sentences.csv",
-        "ro": "C:\\gdrive\\vok\\ro_sentences.csv"
+        "ro": "C:\\gdrive\\vok\\ro_sentences.csv",
+        "sv": "C:\\gdrive\\vok\\sv_sentences.csv"
     },
     "query_repo": 
     {
@@ -30,7 +32,8 @@
         "pl": "deck:Backlog::Vocab::Polish",
         "ar": "deck:Backlog::Vocab::Arabic",
         "tr": "deck:Backlog::Vocab::Turkish",
-        "ro": "deck:Backlog::Vocab::Romanian"
+        "ro": "deck:Backlog::Vocab::Romanian",
+        "sv": "deck:Backlog::Vocab::Swedish"
     },
     "query_repo_sentence": 
     {
@@ -40,9 +43,10 @@
         "pl": "deck:Backlog::Sentences::Polish",
         "ar": "deck:Backlog::Sentences::Arabic",
         "tr": "deck:Backlog::Sentences::Turkish",
-        "ro": "deck:Backlog::Sentences::Romanian"
+        "ro": "deck:Backlog::Sentences::Romanian",
+        "sv": "deck:Backlog::Sentences::Swedish"
     },
-    "deck":
+    "deck_sentence":
     {
         "it": "Backlog::Sentences::Italian",
         "fr": "Backlog::Sentences::French",
@@ -50,7 +54,19 @@
         "pl": "Backlog::Sentences::Polish",
         "ar": "Backlog::Sentences::Arabic",
         "tr": "Backlog::Sentences::Turkish",
-        "ro": "Backlog::Sentences::Romanian"
+        "ro": "Backlog::Sentences::Romanian",
+        "sv": "Backlog::Sentences::Swedish"
+    },
+    "deck_vocab":
+    {
+        "it": "Backlog::Vocab::Italian",
+        "fr": "Backlog::Vocab::French",
+        "es": "Backlog::Vocab::Spanish",
+        "pl": "Backlog::Vocab::Polish",
+        "ar": "Backlog::Vocab::Arabic",
+        "tr": "Backlog::Vocab::Turkish",
+        "ro": "Backlog::Vocab::Romanian",
+        "sv": "Backlog::Vocab::Swedish"
     },
     "query_deck":
     {
@@ -60,7 +76,8 @@
         "pl": "deck:Active::PL::Vocab",
         "ar": "deck:Active::AR::Vocab",
         "tr": "deck:Active::TR::Vocab",
-        "ro": "deck:Active::RO::Vocab"
+        "ro": "deck:Active::RO::Vocab",
+        "sv": "deck:Active::SV::Vocab"
     },
     "query_deck_sentence":
     {
@@ -70,7 +87,8 @@
         "pl": "deck:Active::PL::Sentences",
         "ar": "deck:Active::AR::Sentences",
         "tr": "deck:Active::TR::Sentences",
-        "ro": "deck:Active::RO::Sentences"
+        "ro": "deck:Active::RO::Sentences",
+        "sv": "deck:Active::SV::Sentences"
     },
     "language_map":
     {
@@ -80,6 +98,7 @@
         "it": "Italian",
         "tr": "Turkish",
         "pl": "Polish",
-        "ro": "Romanian"
+        "ro": "Romanian",
+        "sv": "Swedish"
     }
 }

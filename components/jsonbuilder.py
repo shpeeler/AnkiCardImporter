@@ -39,7 +39,7 @@ class JsonBuilder(object):
                         
         return resultDict
 
-    def create_jsondict_word(self, deck, card_type, language, note_id, word, translation, word_pl, translation_pl, gender, tags, note, example):
+    def create_jsondict_word(self, deck, card_type, language, note_id, word, translation, word_pl, gender, tags, note, example):
 
         audio = "[sound:audio_{0}_{1}.mp3]".format(language, word)
         audio_pl = ""
@@ -60,7 +60,6 @@ class JsonBuilder(object):
                                     "Word": word,
                                     "Word Plural": word_pl,
                                     "Translation": translation,
-                                    "Translation Plural": translation_pl,
                                     "Gender": gender,
                                     "Example": example,
                                     "Note": note,

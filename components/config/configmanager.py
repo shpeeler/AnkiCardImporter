@@ -34,7 +34,11 @@ class ConfigManager(object):
         else:
             self.QueryDeck = config_json["query_deck"][language.lower()]
             
-        self.Deck = config_json["deck"][language.lower()]
+        if phrase_mode:
+            self.Deck = config_json["deck_sentence"][language.lower()]
+        else:
+            self.Deck = config_json["deck_vocab"][language.lower()]
+
         self.SkipStore = test
         self.RandomInsert = random
         self.CheckExisting = existing
@@ -45,4 +49,4 @@ class ConfigManager(object):
             self.FileDestination = config_json["file_destination_test"]
 
     def print_config(self):
-        print("\nLanguage = {} ({})\nSkip-Store = {}\nRandom-Insert = {}\nCheckExisting = {}\nAddress = {}\nFile-Source = {}\nFile-Destination = {}\nQuery-Repository = {}\nQuery-Deck = {}\n".format(self.Language, self.LanguageCode.upper(), self.SkipStore, self.RandomInsert, self.CheckExisting, self.Address, self.FileSource, self.FileDestination, self.Query, self.QueryDeck))
+        print("\nLanguage = {} ({})\nSkip-Store = {}\nRandom-Insert = {}\nCheckExisting = {}\nAddress = {}\nFile-Source = {}\nFile-Destination = {}\nQuery-Repository = {}\nQuery-Deck = {}\nDeck = {}\n".format(self.Language, self.LanguageCode.upper(), self.SkipStore, self.RandomInsert, self.CheckExisting, self.Address, self.FileSource, self.FileDestination, self.Query, self.QueryDeck, self.Deck))

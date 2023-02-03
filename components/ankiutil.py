@@ -9,7 +9,7 @@ from .config.configmanager import ConfigManager
 from .ankiconnector import AnkiConnector
 from .audiogenerator import AudioGenerator
 from .jsonbuilder import JsonBuilder
-from .csvparser import CSVParser
+from .xmlparser import XMLParser
 from random import shuffle
 
 class AnkiUtil(object):
@@ -28,14 +28,14 @@ class AnkiUtil(object):
         if self.configmanager.CheckExisting == True:
             existing_cards = self._get_existing_card_names()
 
-        self.csvparser = CSVParser(self.audiogenerator, self.builder, existing_cards)
+        self.xmlparser = XMLParser(self.audiogenerator, self.builder, existing_cards)
         
     def create_cards_from_file(self, phrase_mode):
         
         if phrase_mode:
-            cardsToAdd = self.csvparser.parse_sentence(self.configmanager.FileSource, self.configmanager.LanguageCode, self.configmanager.Deck)
+            cardsToAdd = self.xmlparser.parse_sentence(self.configmanager.FileSource, self.configmanager.SheetName, self.configmanager.LanguageCode, self.configmanager.Deck)
         else:
-            cardsToAdd = self.csvparser.parse_word(self.configmanager.FileSource, self.configmanager.LanguageCode, self.configmanager.Deck)
+            cardsToAdd = self.xmlparser.parse_word(self.configmanager.FileSource, self.configmanager.SheetName, self.configmanager.LanguageCode, self.configmanager.Deck)
             
         if not cardsToAdd:
             print("error while reading the file: {0} with the language {1}".format(self.configmanager.FileSource, self.configmanager.LanguageCode))

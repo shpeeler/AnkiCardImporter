@@ -2,27 +2,21 @@
     "address": "http://localhost:8765",
     "file_destination": "C:\\Users\\are\\AppData\\Roaming\\Anki2\\User 1\\collection.media",
     "file_destination_test": "C:\\Temp",
+    "sheet_name":
+    {
+        "Vocab": "Voc",
+        "Sentence": "Sent"
+    },
     "file_source": 
     {
-        "fr": "C:\\gdrive\\vok\\fr_Voc.csv",
-        "es": "C:\\gdrive\\vok\\es_Voc.csv",
-        "it": "C:\\gdrive\\vok\\it_Voc.csv",
-        "pl": "C:\\gdrive\\vok\\pl_Voc.csv",
-        "ar": "C:\\gdrive\\vok\\ar_Voc.csv",
-        "tr": "C:\\gdrive\\vok\\tr_Voc.csv",
-        "ro": "C:\\gdrive\\vok\\ro_Voc.csv",
-        "sv": "C:\\gdrive\\vok\\sv_Voc.csv"
-    },
-    "file_source_sentence": 
-    {
-        "fr": "C:\\gdrive\\vok\\fr_Sent.csv",
-        "es": "C:\\gdrive\\vok\\es_Sent.csv",
-        "it": "C:\\gdrive\\vok\\it_Sent.csv",
-        "pl": "C:\\gdrive\\vok\\pl_Sent.csv",
-        "ar": "C:\\gdrive\\vok\\ar_Sent.csv",
-        "tr": "C:\\gdrive\\vok\\tr_Sent.csv",
-        "ro": "C:\\gdrive\\vok\\ro_Sent.csv",
-        "sv": "C:\\gdrive\\vok\\sv_Sent.csv"
+        "fr": "C:\\gdrive\\vok\\fr.xlsx",
+        "es": "C:\\gdrive\\vok\\es.xlsx",
+        "it": "C:\\gdrive\\vok\\it.xlsx",
+        "pl": "C:\\gdrive\\vok\\pl.xlsx",
+        "ar": "C:\\gdrive\\vok\\ar.xlsx",
+        "tr": "C:\\gdrive\\vok\\tr.xlsx",
+        "ro": "C:\\gdrive\\vok\\ro.xlsx",
+        "sv": "C:\\gdrive\\vok\\sv.xlsx"
     },
     "query_repo": 
     {

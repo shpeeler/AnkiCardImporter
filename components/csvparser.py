@@ -81,7 +81,7 @@ class CSVParser(object):
                     if json:
                         self.audiogenerator.speak(word)                        
                         
-                        if word_pl != None and word_pl != "":
+                        if word_pl != None and word_pl != "" and word_pl != "ø":
                             self.audiogenerator.speak(word_pl)  
 
                         cardsToCreate.append(json)

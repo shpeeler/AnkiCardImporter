@@ -44,7 +44,7 @@ class JsonBuilder(object):
         audio = "[sound:audio_{0}_{1}.mp3]".format(language, word)
         audio_pl = ""
         
-        if word_pl != None and word_pl != "":
+        if word_pl != None and word_pl != "" and word_pl != "ø":
             audio_pl = "[sound:audio_{0}_{1}.mp3]".format(language, word_pl)
 
         resultDict = dict( 

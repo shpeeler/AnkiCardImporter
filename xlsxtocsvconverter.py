@@ -10,6 +10,14 @@ parser.add_argument("-d", "--destinationpath", help="destination path for csv fi
 
 args = parser.parse_args()
 
+def convert_xlsx(xlsx, sheet):
+
+    df_xlxs = pd.read_excel(xlsx, sheet)
+
+    writer_file = io.StringIO()
+    df_xlxs.to_csv("{0}\{1}_{2}.csv".format(args.destinationpath, Path(f).stem, sheet), index=None, header=True, sep=";")
+    writer_file.seek(0)
+
 counter = 1
 files = [f for f in listdir(args.sourcepath) if isfile(join(args.sourcepath, f))]
 for f in files:
@@ -19,11 +27,10 @@ for f in files:
 
     path = join(args.sourcepath, f)
 
-    df_xlxs = pd.read_excel(path, "Voc")
-
-    writer_file = io.StringIO()
-    df_xlxs.to_csv("{0}\{1}.csv".format(args.destinationpath, Path(f).stem), index=None, header=True, sep=";")
-    writer_file.seek(0)
-
+    convert_xlsx(path, 'Voc')
+    convert_xlsx(path, 'Sent')
+    
     print("{0}/{1} done - {2}".format(counter, len(files), f))
     counter = counter + 1
+
+

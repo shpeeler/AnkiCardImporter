@@ -4,25 +4,25 @@
     "file_destination_test": "C:\\Temp",
     "file_source": 
     {
-        "fr": "C:\\gdrive\\vok\\fr.csv",
-        "es": "C:\\gdrive\\vok\\es.csv",
-        "it": "C:\\gdrive\\vok\\it.csv",
-        "pl": "C:\\gdrive\\vok\\pl.csv",
-        "ar": "C:\\gdrive\\vok\\ar.csv",
-        "tr": "C:\\gdrive\\vok\\tr.csv",
-        "ro": "C:\\gdrive\\vok\\ro.csv",
-        "sv": "C:\\gdrive\\vok\\sv.csv"
+        "fr": "C:\\gdrive\\vok\\fr_Voc.csv",
+        "es": "C:\\gdrive\\vok\\es_Voc.csv",
+        "it": "C:\\gdrive\\vok\\it_Voc.csv",
+        "pl": "C:\\gdrive\\vok\\pl_Voc.csv",
+        "ar": "C:\\gdrive\\vok\\ar_Voc.csv",
+        "tr": "C:\\gdrive\\vok\\tr_Voc.csv",
+        "ro": "C:\\gdrive\\vok\\ro_Voc.csv",
+        "sv": "C:\\gdrive\\vok\\sv_Voc.csv"
     },
     "file_source_sentence": 
     {
-        "fr": "C:\\gdrive\\vok\\fr_sentences.csv",
-        "es": "C:\\gdrive\\vok\\es_sentences.csv",
-        "it": "C:\\gdrive\\vok\\it_sentences.csv",
-        "pl": "C:\\gdrive\\vok\\pl_sentences.csv",
-        "ar": "C:\\gdrive\\vok\\ar_sentences.csv",
-        "tr": "C:\\gdrive\\vok\\tr_sentences.csv",
-        "ro": "C:\\gdrive\\vok\\ro_sentences.csv",
-        "sv": "C:\\gdrive\\vok\\sv_sentences.csv"
+        "fr": "C:\\gdrive\\vok\\fr_Sent.csv",
+        "es": "C:\\gdrive\\vok\\es_Sent.csv",
+        "it": "C:\\gdrive\\vok\\it_Sent.csv",
+        "pl": "C:\\gdrive\\vok\\pl_Sent.csv",
+        "ar": "C:\\gdrive\\vok\\ar_Sent.csv",
+        "tr": "C:\\gdrive\\vok\\tr_Sent.csv",
+        "ro": "C:\\gdrive\\vok\\ro_Sent.csv",
+        "sv": "C:\\gdrive\\vok\\sv_Sent.csv"
     },
     "query_repo": 
     {

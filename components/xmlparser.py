@@ -24,13 +24,17 @@ class XMLParser(object):
         total = len(data.index)
 
         for each in data.itertuples():
+            index       = each[0]
             sentence    = each[1]
             translation = each[2]
             note        = each[3]
-            tags        = values[4]
+            tags        = each[4]
 
             if note != note:
                 note = ""
+
+            if tags != tags:
+                tags = ""
 
             note_id = uuid.uuid4()
 

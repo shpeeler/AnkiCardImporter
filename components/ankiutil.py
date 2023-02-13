@@ -33,7 +33,7 @@ class AnkiUtil(object):
     def create_cards_from_file(self, phrase_mode):
         
         if phrase_mode:
-            cardsToAdd = self.xmlparser.parse_sentence(self.configmanager.FileSource, self.configmanager.SheetName, self.configmanager.LanguageCode, self.configmanager.Deck, self.configmanager.Reshape)
+            cardsToAdd = self.xmlparser.parse_sentence(self.configmanager.FileSource, self.configmanager.SheetName, self.configmanager.LanguageCode, self.configmanager.DeckSentence, self.configmanager.Reshape)
         else:
             cardsToAdd = self.xmlparser.parse_word(self.configmanager.FileSource, self.configmanager.SheetName, self.configmanager.LanguageCode, self.configmanager.Deck, self.configmanager.Reshape)
             

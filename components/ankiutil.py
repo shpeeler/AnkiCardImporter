@@ -33,9 +33,9 @@ class AnkiUtil(object):
     def create_cards_from_file(self, phrase_mode):
         
         if phrase_mode:
-            cardsToAdd = self.xmlparser.parse_sentence(self.configmanager.FileSource, self.configmanager.SheetName, self.configmanager.LanguageCode, self.configmanager.Deck)
+            cardsToAdd = self.xmlparser.parse_sentence(self.configmanager.FileSource, self.configmanager.SheetName, self.configmanager.LanguageCode, self.configmanager.Deck, self.configmanager.Reshape)
         else:
-            cardsToAdd = self.xmlparser.parse_word(self.configmanager.FileSource, self.configmanager.SheetName, self.configmanager.LanguageCode, self.configmanager.Deck)
+            cardsToAdd = self.xmlparser.parse_word(self.configmanager.FileSource, self.configmanager.SheetName, self.configmanager.LanguageCode, self.configmanager.Deck, self.configmanager.Reshape)
             
         if not cardsToAdd:
             print("error while reading the file: {0} with the language {1}".format(self.configmanager.FileSource, self.configmanager.LanguageCode))

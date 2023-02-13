@@ -11,6 +11,7 @@ class ConfigManager(object):
     DeckSentence = None
     Query = None
     QueryDeck = None
+    Reshape = False
     SkipStore = False
     RandomInsert = False
     CheckExisting = False
@@ -18,6 +19,9 @@ class ConfigManager(object):
 
     def __init__(self, config_json, language, test = False, random = False, existing = False, phrase_mode = False):
         self.LanguageCode = language
+        if self.LanguageCode == "AR":
+            Reshape = True
+        
         self.Language = config_json["language_map"][language.lower()]
         self.Address = config_json["address"]
 
@@ -42,4 +46,4 @@ class ConfigManager(object):
             self.FileDestination = config_json["file_destination_test"]
 
     def print_config(self):
-        print("\nLanguage = {} ({})\nSheet = {}\nSkip-Store = {}\nRandom-Insert = {}\nCheckExisting = {}\nAddress = {}\nFile-Source = {}\nFile-Destination = {}\nQuery-Repository = {}\nQuery-Deck = {}\nDeck = {}\nDeck-Sentence = {}\n".format(self.Language, self.LanguageCode.upper(), self.SheetName, self.SkipStore, self.RandomInsert, self.CheckExisting, self.Address, self.FileSource, self.FileDestination, self.Query, self.QueryDeck, self.Deck, self.DeckSentence))
+        print("\nLanguage = {} ({})\nSheet = {}\nSkip-Store = {}\nRandom-Insert = {}\nCheckExisting = {}\nAddress = {}\nFile-Source = {}\nReshape = {}\nFile-Destination = {}\nQuery-Repository = {}\nQuery-Deck = {}\nDeck = {}\nDeck-Sentence = {}\n".format(self.Language, self.LanguageCode.upper(), self.SheetName, self.SkipStore, self.RandomInsert, self.CheckExisting, self.Reshape, self.Address, self.FileSource, self.FileDestination, self.Query, self.QueryDeck, self.Deck, self.DeckSentence))

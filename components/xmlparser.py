@@ -2,6 +2,9 @@
 
 import uuid, codecs
 import pandas as pd
+import arabic_reshaper
+
+from bidi.algorithm import get_display
 from .jsonbuilder import JsonBuilder
 from .audiogenerator import AudioGenerator
 
@@ -12,7 +15,7 @@ class XMLParser(object):
         self.audiogenerator = generator
         self.existing_cards = existing_cards
     
-    def parse_sentence(self, file, sheet, language, deck):
+    def parse_sentence(self, file, sheet, language, deck, reshape):
 
         cardsToCreate = list()
         counter = 1
@@ -21,18 +24,24 @@ class XMLParser(object):
         total = len(data.index)
 
         for each in data.itertuples():
-            sentence = each[1]
+            sentence    = each[1]
             translation = each[2]
-            note = each[3]
+            note        = each[3]
+            tags        = values[4]
 
             if note != note:
                 note = ""
 
             note_id = uuid.uuid4()
 
-            print("parsing: {0}/{1} - {2} => {3}".format(counter, total, sentence, translation))
+            print_sentence = sentence
+            if reshape == True:
+                reshaped_sentence = arabic_reshaper.reshape(sentence)
+                print_sentence = get_display(reshaped_sentence)
 
-            json = self.builder.create_jsondict_sentence(deck, "Sentences", language, note_id, sentence, translation, note)
+            print("parsing: {0}/{1} - {2} => {3}".format(counter, total, print_sentence, translation))
+
+            json = self.builder.create_jsondict_sentence(deck, "Sentences", language, note_id, sentence, translation, note, tags)
             if json:
                 self.audiogenerator.speak(sentence, note_id)                        
                 cardsToCreate.append(json)
@@ -41,7 +50,7 @@ class XMLParser(object):
 
         return cardsToCreate
 
-    def parse_word(self, file, sheet, language, deck):
+    def parse_word(self, file, sheet, language, deck, reshape):
         cardsToCreate = list()
         counter = 1
 
@@ -59,10 +68,15 @@ class XMLParser(object):
 
             note_id = uuid.uuid4()
 
-            print("parsing: {0}/{1} - {2} => {3}".format(counter, total, word, translation))
+            print_word = word
+            if reshape == True:
+                reshaped_word = arabic_reshaper.reshape(word)
+                print_word = get_display(reshaped_word)
+
+            print("parsing: {0}/{1} - {2} => {3}".format(counter, total, print_word, translation))
 
             if self.existing_cards != None and word in self.existing_cards:
-                print("card {0} exists already".format(word))
+                print("card {0} exists already".format(print_word))
                 continue
 
             json = self.builder.create_jsondict_word(deck, "Vocab", language, note_id, word, translation, word_pl, gender, tags, note, example)

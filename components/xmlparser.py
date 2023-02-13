@@ -62,13 +62,14 @@ class XMLParser(object):
         total = len(data.index)
 
         for each in data.itertuples():
-            word        = values[1]
-            word_pl     = values[2]
-            translation = values[3]
-            gender      = values[4]
-            tags        = values[5]
-            note        = values[6]
-            example     = values[7]
+            index       = each[0]
+            word        = each[1]
+            word_pl     = each[2]
+            translation = each[3]
+            gender      = each[4]
+            tags        = each[5]
+            note        = each[6]
+            example     = each[7]
 
             note_id = uuid.uuid4()
 

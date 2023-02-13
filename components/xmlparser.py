@@ -33,8 +33,10 @@ class XMLParser(object):
             if note != note:
                 note = ""
 
-            if tags != tags:
+            if tags != tags or tags == "":
                 tags = ""
+            else:
+                tags = tags.split(',')
 
             note_id = uuid.uuid4()
 
@@ -77,6 +79,11 @@ class XMLParser(object):
             if reshape == True:
                 reshaped_word = arabic_reshaper.reshape(word)
                 print_word = get_display(reshaped_word)
+
+            if tags != tags or tags == "":
+                tags = ""
+            else:
+                tags = tags.split(',')
 
             print("parsing: {0}/{1} - {2} => {3}".format(counter, total, print_word, translation))
 

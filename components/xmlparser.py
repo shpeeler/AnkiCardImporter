@@ -24,22 +24,17 @@ class XMLParser(object):
         total = len(data.index)
 
         for each in data.itertuples():
-            index       = each[0]
-            sentence    = each[1]
-            translation = each[2]
-            note        = each[3]
-            tags        = each[4]
-
-            if note != note:
-                note = ""
-
-            if tags != tags or tags == "":
-                tags = ""
-            else:
-                tags = tags.split(',')
+            index       = self.empty_if_nan(each[0])
+            sentence    = self.empty_if_nan(each[1])
+            translation = self.empty_if_nan(each[2])
+            note        = self.empty_if_nan(each[3])
+            tags        = self.empty_if_nan(each[4])
 
             note_id = uuid.uuid4()
 
+            if tags != "":
+                tags = tags.split(',')
+            
             print_sentence = sentence
             if reshape == True:
                 reshaped_sentence = arabic_reshaper.reshape(sentence)
@@ -64,14 +59,14 @@ class XMLParser(object):
         total = len(data.index)
 
         for each in data.itertuples():
-            index       = each[0]
-            word        = each[1]
-            word_pl     = each[2]
-            translation = each[3]
-            gender      = each[4]
-            tags        = each[5]
-            note        = each[6]
-            example     = each[7]
+            index       = self.empty_if_nan(each[0])
+            word        = self.empty_if_nan(each[1])
+            word_pl     = self.empty_if_nan(each[2])
+            translation = self.empty_if_nan(each[3])
+            gender      = self.empty_if_nan(each[4])
+            tags        = self.empty_if_nan(each[5])
+            note        = self.empty_if_nan(each[6])
+            example     = self.empty_if_nan(each[7])
 
             note_id = uuid.uuid4()
 
@@ -80,9 +75,7 @@ class XMLParser(object):
                 reshaped_word = arabic_reshaper.reshape(word)
                 print_word = get_display(reshaped_word)
 
-            if tags != tags or tags == "":
-                tags = ""
-            else:
+            if tags != "":
                 tags = tags.split(',')
 
             print("parsing: {0}/{1} - {2} => {3}".format(counter, total, print_word, translation))
@@ -96,7 +89,7 @@ class XMLParser(object):
             if json:
                 self.audiogenerator.speak(word)                        
                 
-                if word_pl != None and word_pl != "" and word_pl != "ø":
+                if word_pl != "" and word_pl != "ø":
                     self.audiogenerator.speak(word_pl)  
 
                 cardsToCreate.append(json)
@@ -104,3 +97,11 @@ class XMLParser(object):
             counter = counter + 1
         
         return cardsToCreate
+
+
+    def empty_if_nan(self, value):
+
+        if value != value or value == None:
+            return ""
+
+        return value

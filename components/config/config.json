@@ -16,7 +16,9 @@
         "ar": "C:\\gdrive\\vok\\ar.xlsx",
         "tr": "C:\\gdrive\\vok\\tr.xlsx",
         "ro": "C:\\gdrive\\vok\\ro.xlsx",
-        "sv": "C:\\gdrive\\vok\\sv.xlsx"
+        "sv": "C:\\gdrive\\vok\\sv.xlsx",
+        "pt": "C:\\gdrive\\vok\\pt.xlsx"
+
     },
     "query_repo": 
     {
@@ -27,7 +29,8 @@
         "ar": "deck:Backlog::Vocab::Arabic",
         "tr": "deck:Backlog::Vocab::Turkish",
         "ro": "deck:Backlog::Vocab::Romanian",
-        "sv": "deck:Backlog::Vocab::Swedish"
+        "sv": "deck:Backlog::Vocab::Swedish",
+        "pt": "deck:Backlog::Vocab::Portuguese"
     },
     "query_repo_sentence": 
     {
@@ -38,7 +41,8 @@
         "ar": "deck:Backlog::Sentences::Arabic",
         "tr": "deck:Backlog::Sentences::Turkish",
         "ro": "deck:Backlog::Sentences::Romanian",
-        "sv": "deck:Backlog::Sentences::Swedish"
+        "sv": "deck:Backlog::Sentences::Swedish",
+        "pt": "deck:Backlog::Sentences::Portuguese"
     },
     "deck_sentence":
     {
@@ -49,7 +53,9 @@
         "ar": "Backlog::Sentences::Arabic",
         "tr": "Backlog::Sentences::Turkish",
         "ro": "Backlog::Sentences::Romanian",
-        "sv": "Backlog::Sentences::Swedish"
+        "sv": "Backlog::Sentences::Swedish",
+        "pt": "Backlog::Sentences::Portuguese"
+
     },
     "deck_vocab":
     {
@@ -60,7 +66,8 @@
         "ar": "Backlog::Vocab::Arabic",
         "tr": "Backlog::Vocab::Turkish",
         "ro": "Backlog::Vocab::Romanian",
-        "sv": "Backlog::Vocab::Swedish"
+        "sv": "Backlog::Vocab::Swedish",
+        "pt": "Backlog::Vocab::Portuguese"
     },
     "query_deck":
     {
@@ -71,7 +78,8 @@
         "ar": "deck:Active::AR::Vocab",
         "tr": "deck:Active::TR::Vocab",
         "ro": "deck:Active::RO::Vocab",
-        "sv": "deck:Active::SV::Vocab"
+        "sv": "deck:Active::SV::Vocab",
+        "pt": "deck:Active::PT::Vocab"
     },
     "query_deck_sentence":
     {
@@ -82,7 +90,9 @@
         "ar": "deck:Active::AR::Sentences",
         "tr": "deck:Active::TR::Sentences",
         "ro": "deck:Active::RO::Sentences",
-        "sv": "deck:Active::SV::Sentences"
+        "sv": "deck:Active::SV::Sentences",
+        "pt": "deck:Active::PT::Sentences"
+
     },
     "language_map":
     {
@@ -93,6 +103,7 @@
         "tr": "Turkish",
         "pl": "Polish",
         "ro": "Romanian",
-        "sv": "Swedish"
+        "sv": "Swedish",
+        "pt": "Portuguese"
     }
 }

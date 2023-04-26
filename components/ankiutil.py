@@ -136,6 +136,9 @@ class AnkiUtil(object):
         counter = 1
         for each_info in note_info:
             
+            if counter == 250:
+                return
+
             note_id = each_info["noteId"]
             word = each_info["fields"]["Word"]["value"]
             audio = each_info["fields"]["Audio"]["value"]

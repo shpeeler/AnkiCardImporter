@@ -7,6 +7,18 @@
         "Vocab": "Voc",
         "Sentence": "Sent"
     },
+    "tld":
+    {
+        "fr": "",
+        "es": "",
+        "it": "",
+        "pl": "",
+        "ar": "",
+        "tr": "",
+        "ro": "",
+        "sv": "",
+        "pt": "pt"
+    },
     "file_source": 
     {
         "fr": "C:\\gdrive\\vok\\fr.xlsx",

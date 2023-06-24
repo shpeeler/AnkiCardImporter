@@ -5,12 +5,17 @@ from gtts import gTTS
 
 class AudioGenerator(object):
     
-    def __init__(self, language, destination_path):
+    def __init__(self, language, destination_path, tld = None):
         self.language = language
         self.destination_path = destination_path
+        self.tld = tld
 
     def speak(self, sentence, filename = None):
-        tts = gTTS(sentence, lang=self.language)
+        
+        if self.tld != "" and self.tld != None:
+            tts = gTTS(sentence, lang=self.language, tld=self.tld)
+        else:
+            tts = gTTS(sentence, lang=self.language)
 
         final_filename = None
         if filename != None:

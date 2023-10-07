@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 class JsonBuilder(object):
-    
+
     def __init__(self):
         pass
     
@@ -44,11 +44,11 @@ class JsonBuilder(object):
 
     def create_jsondict_word(self, deck, card_type, language, note_id, word, translation, word_pl, gender, tags, note, example):
 
-        audio = "[sound:audio_{0}_{1}.mp3]".format(language, word)
+        audio = "[sound:audio_{0}_{1}.mp3]".format(language, str(note_id))
         audio_pl = ""
         
         if word_pl != None and word_pl != "" and word_pl != "ø":
-            audio_pl = "[sound:audio_{0}_{1}.mp3]".format(language, note_id)
+            audio_pl = "[sound:audio_{0}_{1}_plural.mp3]".format(language, str(note_id))
 
         resultDict = dict( 
                     {
@@ -107,9 +107,9 @@ class JsonBuilder(object):
 
         return resultDict
 
-    def add_audio_by_id(self, id, language, word):
+    def add_audio_by_id(self, id, language, audio_name):
 
-        audiofilename = "[sound:audio_{0}_{1}.mp3]".format(language, word)
+        audiofilename = "[sound:audio_{0}_{1}.mp3]".format(language, audio_name)
 
         resultDict = dict(
             {
@@ -147,9 +147,9 @@ class JsonBuilder(object):
 
         return resultDict
 
-    def add_audio_by_id_plural(self, id, language, word):
+    def add_audio_by_id_plural(self, id, language, audio_name):
 
-        audiofilename = "[sound:audio_{0}_{1}.mp3]".format(language, word)
+        audiofilename = "[sound:audio_{0}_{1}_plural.mp3]".format(language, audio_name)
 
         resultDict = dict(
             {

@@ -153,8 +153,8 @@ class AnkiUtil(object):
                 tagless_word = re.sub(clean_re, '', word)
                 clean_word = tagless_word.replace("&nbsp;", " ")
 
-                self.audiogenerator.speak(clean_word)
-                query_add_audio = self.builder.add_audio_by_id(note_id, self.configmanager.LanguageCode, clean_word)
+                self.audiogenerator.speak(clean_word, str(note_id))
+                query_add_audio = self.builder.add_audio_by_id(note_id, self.configmanager.LanguageCode, str(note_id))
                 print("{}/{} new audio - {}".format(counter, len(note_info), print_word))
 
             if plural == True:
@@ -165,8 +165,8 @@ class AnkiUtil(object):
                     plural_tagless_word = re.sub(clean_re, '', word_plural)
                     plural_clean_word = plural_tagless_word.replace("&nbsp;", " ")
 
-                    self.audiogenerator.speak(plural_clean_word)
-                    query_add_audio_plural = self.builder.add_audio_by_id_plural(note_id, self.configmanager.LanguageCode, plural_clean_word)
+                    self.audiogenerator.speak(plural_clean_word, str(note_id) + "_plural")
+                    query_add_audio_plural = self.builder.add_audio_by_id_plural(note_id, self.configmanager.LanguageCode, str(note_id))
                     print("{}/{} new plural-audio - {}".format(counter, len(note_info), print_word))
             
             if self.configmanager.SkipStore == False:

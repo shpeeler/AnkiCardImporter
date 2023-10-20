@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import argparse, json
+import argparse, json, requests
 from gtts import gTTS
 
 class AudioGenerator(object):
@@ -23,4 +23,10 @@ class AudioGenerator(object):
         else:
             final_filename = sentence.replace("?", "")
 
-        tts.save("{0}\\audio_{1}_{2}.mp3".format(self.destination_path, self.language, final_filename))
+        try:
+            tts.save("{0}\\audio_{1}_{2}.mp3".format(self.destination_path, self.language, final_filename))
+        except Exception as e:
+            print("unable to generate audio files: {0}".format(e))
+            return False
+        
+        return True

@@ -87,10 +87,16 @@ class XMLParser(object):
             json = self.builder.create_jsondict_word(deck, "Vocab", language, note_id, word, translation, word_pl, gender, tags, note, example)
 
             if json:
-                self.audiogenerator.speak(word, str(note_id))                        
+                
+                
+                if self.audiogenerator.speak(word, str(note_id)) == False:
+                    print("error during audio generation for card '{}' - returning the processed cards".format(word))
+                    return                     
                 
                 if word_pl != "" and word_pl != "ø":
-                    self.audiogenerator.speak(word_pl, str(note_id) + "_plural")  
+                    if self.audiogenerator.speak(word_pl, str(note_id) + "_plural") == False:
+                        print("error during audio generation for card '{}' - returning the processed cards".format(word_pl))
+                        return  
 
                 cardsToCreate.append(json)
 

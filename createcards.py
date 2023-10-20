@@ -6,7 +6,7 @@ from components.ankiutil import AnkiUtil
 
 # parse args
 parser = argparse.ArgumentParser(description="Read Sentence")
-parser.add_argument("-l", "--language", help="ar/es/pl/fr/tr/it")
+parser.add_argument("-l", "--language", help="ar/es/pl/fr/tr/it/ro/se/pt/uk")
 parser.add_argument("-s", "--skipstore", help="skips store procedure")
 parser.add_argument("-r", "--random", help="randomizes the import order")
 parser.add_argument("-re", "--reshape", help="enable reshape mode (arabic)")

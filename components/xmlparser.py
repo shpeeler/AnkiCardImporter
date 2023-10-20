@@ -51,7 +51,7 @@ class XMLParser(object):
 
         return cardsToCreate
 
-    def parse_word(self, file, sheet, language, deck, reshape):
+    def parse_word(self, file, sheet, language, deck, reshape, skip_audio = False):
         cardsToCreate = list()
         counter = 1
 
@@ -59,6 +59,7 @@ class XMLParser(object):
         total = len(data.index)
 
         for each in data.itertuples():
+
             index       = self.empty_if_nan(each[0])
             word        = self.empty_if_nan(each[1])
             word_pl     = self.empty_if_nan(each[2])
@@ -84,20 +85,20 @@ class XMLParser(object):
                 print("card {0} exists already".format(print_word))
                 continue
 
-            json = self.builder.create_jsondict_word(deck, "Vocab", language, note_id, word, translation, word_pl, gender, tags, note, example)
+            json = self.builder.create_jsondict_word(deck, "Vocab", language, note_id, word, translation, word_pl, gender, tags, note, example, skip_audio)
 
             if json:
-                
-                
-                if self.audiogenerator.speak(word, str(note_id)) == False:
-                    print("error during audio generation for card '{}' - returning the processed cards".format(word))
-                    return                     
-                
-                if word_pl != "" and word_pl != "ø":
-                    if self.audiogenerator.speak(word_pl, str(note_id) + "_plural") == False:
-                        print("error during audio generation for card '{}' - returning the processed cards".format(word_pl))
-                        return  
+                if skip_audio == False:
+                    if self.audiogenerator.speak(word, str(note_id)) == False:
+                        print("error during audio generation for card '{}' - returning the processed cards".format(word))
+                        return                     
+                    
+                    if word_pl != "" and word_pl != "ø":
 
+                        if self.audiogenerator.speak(word_pl, str(note_id) + "_plural") == False:
+                            print("error during audio generation for card '{}' - returning the processed cards".format(word_pl))
+                            return  
+                
                 cardsToCreate.append(json)
 
             counter = counter + 1

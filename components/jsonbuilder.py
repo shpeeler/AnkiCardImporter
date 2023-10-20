@@ -5,7 +5,7 @@ class JsonBuilder(object):
     def __init__(self):
         pass
     
-    def create_jsondict_sentence(self, deck, card_type, language, note_id, sentence, translation, note, tags):
+    def create_jsondict_sentence(self, deck, card_type, language, note_id, sentence, translation, note, tags, skip_audio):
 
         audiofilename = "[sound:audio_{0}_{1}.mp3]".format(language, note_id)
 
@@ -42,13 +42,16 @@ class JsonBuilder(object):
                         
         return resultDict
 
-    def create_jsondict_word(self, deck, card_type, language, note_id, word, translation, word_pl, gender, tags, note, example):
+    def create_jsondict_word(self, deck, card_type, language, note_id, word, translation, word_pl, gender, tags, note, example, skip_audio = False):
 
-        audio = "[sound:audio_{0}_{1}.mp3]".format(language, str(note_id))
+        audio = ""
         audio_pl = ""
         
-        if word_pl != None and word_pl != "" and word_pl != "ø":
-            audio_pl = "[sound:audio_{0}_{1}_plural.mp3]".format(language, str(note_id))
+        if skip_audio == False:
+            audio = "[sound:audio_{0}_{1}.mp3]".format(language, str(note_id))
+            
+            if word_pl != None and word_pl != "" and word_pl != "ø":
+                audio_pl = "[sound:audio_{0}_{1}_plural.mp3]".format(language, str(note_id))
 
         resultDict = dict( 
                     {

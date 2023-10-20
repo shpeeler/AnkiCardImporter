@@ -36,10 +36,10 @@ class AnkiUtil(object):
         if phrase_mode:
             cardsToAdd = self.xmlparser.parse_sentence(self.configmanager.FileSource, self.configmanager.SheetName, self.configmanager.LanguageCode, self.configmanager.DeckSentence, self.configmanager.Reshape)
         else:
-            cardsToAdd = self.xmlparser.parse_word(self.configmanager.FileSource, self.configmanager.SheetName, self.configmanager.LanguageCode, self.configmanager.Deck, self.configmanager.Reshape)
+            cardsToAdd = self.xmlparser.parse_word(self.configmanager.FileSource, self.configmanager.SheetName, self.configmanager.LanguageCode, self.configmanager.Deck, self.configmanager.Reshape, self.configmanager.SkipAudio)
             
         if not cardsToAdd:
-            print("error while reading the file: {0} with the language {1}".format(self.configmanager.FileSource, self.configmanager.LanguageCode))
+            print("error while reading the file: '{0}' with the language '{1}'".format(self.configmanager.FileSource, self.configmanager.LanguageCode))
             return
             
         total = len(cardsToAdd)

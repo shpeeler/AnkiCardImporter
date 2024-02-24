@@ -1,6 +1,6 @@
 {
     "address": "http://localhost:8765",
-    "file_destination": "C:\\Users\\are\\AppData\\Roaming\\Anki2\\User 1\\collection.media",
+    "file_destination": "C:\\Users\\aljre\\AppData\\Roaming\\Anki2\\User 1\\collection.media",
     "file_destination_test": "C:\\Temp",
     "sheet_name":
     {
@@ -18,7 +18,10 @@
         "ro": "",
         "sv": "",
         "pt": "pt",
-        "uk": ""
+        "uk": "",
+        "da": "",
+        "no": "",
+        "ru": ""
     },
     "file_source": 
     {
@@ -29,9 +32,12 @@
         "ar": "C:\\gdrive\\vok\\ar.xlsx",
         "tr": "C:\\gdrive\\vok\\tr.xlsx",
         "ro": "C:\\gdrive\\vok\\ro.xlsx",
-        "sv": "C:\\gdrive\\vok\\sv.xlsx",
+        "sv": "G:\\My Drive\\vok\\sv.xlsx",
+        "da": "G:\\My Drive\\vok\\da.xlsx",
+        "no": "G:\\My Drive\\vok\\no.xlsx",
         "pt": "C:\\gdrive\\vok\\pt.xlsx",
-        "uk": "C:\\gdrive\\vok\\uk.xlsx"
+        "uk": "C:\\gdrive\\vok\\uk.xlsx",
+        "ru": "G:\\My Drive\\vok\\ru.xlsx"
 
     },
     "query_repo": 
@@ -44,8 +50,11 @@
         "tr": "deck:Backlog::Vocab::Turkish",
         "ro": "deck:Backlog::Vocab::Romanian",
         "sv": "deck:Backlog::Vocab::Swedish",
+        "da": "deck:Backlog::Vocab::Danish",
+        "no": "deck:Backlog::Vocab::Norwegian",
         "pt": "deck:Backlog::Vocab::Portuguese",
-        "uk": "deck:Backlog::Vocab::Ukrainian"
+        "uk": "deck:Backlog::Vocab::Ukrainian",
+        "ru": "deck:Backlog::Vocab::Russian"
     },
     "query_repo_sentence": 
     {
@@ -57,8 +66,11 @@
         "tr": "deck:Backlog::Sentences::Turkish",
         "ro": "deck:Backlog::Sentences::Romanian",
         "sv": "deck:Backlog::Sentences::Swedish",
+        "da": "deck:Backlog::Sentences::Danish",
+        "no": "deck:Backlog::Sentences::Norwegian",
         "pt": "deck:Backlog::Sentences::Portuguese",
-        "uk": "deck:Backlog::Sentences::Ukrainian"
+        "uk": "deck:Backlog::Sentences::Ukrainian",
+        "ru": "deck:Backlog::Sentences::Russian"
     },
     "deck_sentence":
     {
@@ -70,8 +82,11 @@
         "tr": "Backlog::Sentences::Turkish",
         "ro": "Backlog::Sentences::Romanian",
         "sv": "Backlog::Sentences::Swedish",
+        "da": "Backlog::Sentences::Danish",
+        "no": "Backlog::Sentences::Norwegian",
         "pt": "Backlog::Sentences::Portuguese",
-        "uk": "Backlog::Sentences::Ukrainian"
+        "uk": "Backlog::Sentences::Ukrainian",
+        "ru": "Backlog::Sentences::Russian"
 
     },
     "deck_vocab":
@@ -84,8 +99,11 @@
         "tr": "Backlog::Vocab::Turkish",
         "ro": "Backlog::Vocab::Romanian",
         "sv": "Backlog::Vocab::Swedish",
+        "da": "Backlog::Vocab::Danish",
+        "no": "Backlog::Vocab::Norwegian",
         "pt": "Backlog::Vocab::Portuguese",
-        "uk": "Backlog::Vocab::Ukrainian"
+        "uk": "Backlog::Vocab::Ukrainian",
+        "ru": "Backlog::Vocab::Russian"
     },
     "query_deck":
     {
@@ -97,8 +115,11 @@
         "tr": "deck:Active::TR::Vocab",
         "ro": "deck:Active::RO::Vocab",
         "sv": "deck:Active::SV::Vocab",
+        "da": "deck:Active::DA::Vocab",
+        "no": "deck:Active::NO::Vocab",
         "pt": "deck:Active::PT::Vocab",
-        "uk": "deck:Active::UK::Vocab"
+        "uk": "deck:Active::UK::Vocab",
+        "ru": "deck:Active::RU::Vocab"
     },
     "query_deck_sentence":
     {
@@ -110,9 +131,11 @@
         "tr": "deck:Active::TR::Sentences",
         "ro": "deck:Active::RO::Sentences",
         "sv": "deck:Active::SV::Sentences",
+        "da": "deck:Active::DA::Sentences",
+        "no": "deck:Active::NO::Sentences",
         "pt": "deck:Active::PT::Sentences",
-        "uk": "deck:Active::UK::Sentences"
-
+        "uk": "deck:Active::UK::Sentences",
+        "ru": "deck:Active::RU::Sentences"
     },
     "language_map":
     {
@@ -124,7 +147,10 @@
         "pl": "Polish",
         "ro": "Romanian",
         "sv": "Swedish",
+        "da": "Danish",
         "pt": "Portuguese",
-        "uk": "Ukrainian"
+        "uk": "Ukrainian",
+        "no": "Norwegian",
+        "ru": "Russian"
     }
 }

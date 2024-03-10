@@ -1,6 +1,6 @@
 {
     "address": "http://localhost:8765",
-    "file_destination": "C:\\Users\\aljre\\AppData\\Roaming\\Anki2\\User 1\\collection.media",
+    "file_destination": "C:\\Users\\are\\AppData\\Roaming\\Anki2\\User 1\\collection.media",
     "file_destination_test": "C:\\Temp",
     "sheet_name":
     {
@@ -39,6 +39,22 @@
         "uk": "C:\\gdrive\\vok\\uk.xlsx",
         "ru": "G:\\My Drive\\vok\\ru.xlsx"
 
+    },
+    "query_suspended":
+    {
+        "it": "deck:Suspended::IT::Vocab",
+        "fr": "deck:Suspended::FR::Vocab",
+        "es": "deck:Suspended::ES::Vocab",
+        "pl": "deck:Suspended::PL::Vocab",
+        "ar": "deck:Suspended::AR::Vocab",
+        "tr": "deck:Suspended::TR::Vocab",
+        "ro": "deck:Suspended::RO::Vocab",
+        "sv": "deck:Suspended::SV::Vocab",
+        "da": "deck:Suspended::DA::Vocab",
+        "no": "deck:Suspended::NO::Vocab",
+        "pt": "deck:Suspended::PT::Vocab",
+        "uk": "deck:Suspended::UK::Vocab",
+        "ru": "deck:Suspended::RU::Vocab"
     },
     "query_repo": 
     {

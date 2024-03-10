@@ -104,6 +104,7 @@ class AnkiUtil(object):
         
         cards_repo = self._load_cards_by_query(self.configmanager.Query)
         cards_deck = self._load_cards_by_query(self.configmanager.QueryDeck)
+        cards_deck = self._load_cards_by_query(self.configmanager.QuerySuspended)
 
         result = self._return_names_from_info_clean(cards_repo) + self._return_names_from_info_clean(cards_deck)
 

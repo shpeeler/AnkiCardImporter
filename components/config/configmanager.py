@@ -35,7 +35,7 @@ class ConfigManager(object):
         self.FileSource = config_json["file_source"][language.lower()]
         self.Query = config_json["query_repo"][language.lower()]
         self.QueryDeck = config_json["query_deck"][language.lower()]
-        self.QuerySuspended = config["query_suspended"][language.lower()]
+        self.QuerySuspended = config_json["query_suspended"][language.lower()]
         self.Deck = config_json["deck_vocab"][language.lower()]
         self.DeckSentence = config_json["deck_sentence"][language.lower()]
 
